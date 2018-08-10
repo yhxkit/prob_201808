@@ -40,6 +40,8 @@ public class SlotPattern {
 
     public List<Integer> getResultSlotWithGrade(Game.Grade grade){
 
+        resultSlot = getRandomSlot();
+
         switch (grade){
             case grade1:
                 break;
@@ -58,12 +60,6 @@ public class SlotPattern {
         return new Random().ints(1,8).limit(3).collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
     }
 
-
-    boolean checkSlot(List<Integer> slot, Game.Grade grade){
-        boolean result=true;
-
-        return result;
-    }
 
 
 
@@ -86,9 +82,9 @@ public class SlotPattern {
 //    }
 
     void createThird(){
-        List<Integer> thirds = new ArrayList<>();
+     //  List<Integer> thirds = new ArrayList<>();
 //        IntStream.rangeClosed(1,7).flatMap().forEach();
-        patternsForThird.parallelStream().flatMap(IntStream.rangeClosed(1,7).forEach((Integer n) -> {patternsForThird.add(n);}));
+    //    patternsForThird.parallelStream().flatMap(IntStream.rangeClosed(1,7).forEach((Integer n) -> {patternsForThird.add(n);}));
     }
 
 
