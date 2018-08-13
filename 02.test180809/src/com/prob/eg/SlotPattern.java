@@ -76,6 +76,7 @@ public class SlotPattern {
 
 
     void createThird(){
+        // 777을 제외한 세자리가 연속된 슬롯
         ArrayList pattern = IntStream.rangeClosed(1, 7).filter(n -> n!=7).mapToObj(n -> Arrays.asList(n,n,n)).collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
         patternsForThird.addAll(pattern);
     }
@@ -93,7 +94,7 @@ public class SlotPattern {
 
     void createFifth(){
         patternsForFifth = (Set<List<Integer>>)((HashSet<List<Integer>>) allPatterns).clone();
-        patternsForFifth.remove(Arrays.asList(7,7,7));
+        patternsForFifth.remove(Arrays.asList(patternForFirst));
         patternsForFifth.removeAll(patternsForSecond);
         patternsForFifth.removeAll(patternsForThird);
         patternsForFifth.removeAll(patternsForFourth);

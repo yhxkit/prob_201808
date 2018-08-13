@@ -1,4 +1,8 @@
 import java.util.*;
+// 수정 전
+
+
+
 //루프 스트림으로 변환하기~ equals~~
 
 class Player{
