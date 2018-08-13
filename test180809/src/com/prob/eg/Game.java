@@ -12,38 +12,41 @@ public class Game {
     public Game(Player player){
         this.player = player;
         pattern = new SlotPattern(this);
+        this.start(player.money);
+        System.out.println("   총 "+player.lose+"번 베팅하여 "+player.win+"번 획득 "+player.money);
 
-        this.start();
     }
 
-    void start(){
 
-        //재귀로 시드머니가 떨어지면 탈출하는 조건의 함수 새로 짜기... 메서드 정의도 새로 해야하지 않을까?
-        Stream.iterate(0, o -> Integer.parseInt(input("판돈 입력~(0원 이상 보유액 미만 / 현재 "+player.money+" 시드머니 보유)" )))
-                .filter(betting -> betting>=0 && betting<= player.money)
-                .map(betting -> new int[]{betting, player.loseMoney(betting)})
-                .map( moneys -> {
-                    Grade grade = probability();
+    int bettingCheck(int money) {
+        int betting = Integer.parseInt(input("판돈 입력~(판돈:0원 이상 보유액 이하 )[현재 "+money+" 시드머니 보유]"));
+        return  money >= betting ? betting : bettingCheck(money);
+    }
 
-                    if(grade==Grade.grade1){
-                        player.winMoney(moneys[0]*4);
-                    }else if(grade==Grade.grade2){
-                        player.winMoney(moneys[0]*3);
-                    }else if(grade==Grade.grade3){
-                        player.winMoney(moneys[0]*2);
-                    }else if(grade==Grade.grade4){
-                        player.winMoney(moneys[0]);
-                    }
-                    System.out.println("슬롯 번호 "+this.pattern.getResultSlotWithGrade(grade));
-                    moneys[1]=player.money;
-                    //return moneys[1]+" 출력값~ 보유액";
-                    return "";
+    void start(int money){
+        int betting = bettingCheck(player.money);
+        player.loseMoney(betting);
 
-                }).forEach(System.out::println);
+        Grade grade = probability();
 
-        System.out.println("Game over");
-        System.out.println("   총 "+player.win+"번 획득 "+player.lose+"번 잃었습니다.");
+        if(grade==Grade.grade1){
+            player.winMoney(betting*4);
+        }else if(grade==Grade.grade2){
+            player.winMoney(betting*3);
+        }else if(grade==Grade.grade3){
+            player.winMoney(betting*2);
+        }else if(grade==Grade.grade4){
+            player.winMoney(betting);
+        }
+        System.out.println("슬롯 번호 "+this.pattern.getResultSlotWithGrade(grade));
+
+        if(player.money>0) {start(player.money);}else{stop();}
     } //start end
+
+    void stop() {
+        System.out.println("Game over");
+
+    }
 
 
     enum Grade { grade1, grade2, grade3, grade4, grade5 }

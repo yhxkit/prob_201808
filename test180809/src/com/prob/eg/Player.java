@@ -14,7 +14,6 @@ public class Player {
     void winMoney(int amount){
         money += amount;
         win+=1;
-        lose-=1;
         System.out.println(amount+"원 획득");
     }
 

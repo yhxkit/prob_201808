@@ -1,6 +1,7 @@
 package com.prob.eg;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -11,18 +12,9 @@ public class SlotPattern {
     //3등 : 111,222,333,444,555,666
     //4등 : 444를 제외하고, 4가 연속으로 2회 붙어있는 모든 조합(44*, *44);
 
-    //패턴 구현....구현...ㅜㅜ..... 패턴 다 나눠놓고 인덱스 값을 랜덤으로 해서 반환해줄까... 근데 그 나누는게 너무 힘들어..
-    //그렇다고 매번 랜덤한 값 꺼내서 자기 제외 모든 등수에 부합하지 않을 경우에만 반환하기에도 조건 걸기가 너무 복잡해지고
-
-    //1. 랜덤 슬롯을 꺼낸다.
-    //2. 그레이드에 따라 랜덤 슬롯이 그 그레이드에 맞는지 체크한다.
-    //3. 안맞으면 반복한다.
-    //4. 맞으면 내보낸다.
-
     final static int sizeOfAllPatterns = 343;
-    final static int sizeOfPatternFourth = 12;
-
     static Set<List<Integer>> allPatterns = new HashSet<>();
+
     static List<Integer> patternForFirst = Arrays.asList(7,7,7);
     static Set<List<Integer>> patternsForSecond = new HashSet<>(Arrays.asList(Arrays.asList(2,7,2),Arrays.asList(7,2,7)));
     static Set<List<Integer>> patternsForThird = new HashSet<>();
@@ -36,62 +28,76 @@ public class SlotPattern {
     public SlotPattern(Game game){
         this.game = game;
         createAllPatterns();
+        createThird();
+        createFourth();
+        createFifth();
+
     }
 
     public List<Integer> getResultSlotWithGrade(Game.Grade grade){
 
-        resultSlot = getRandomSlot();
+        int idx;
+        Object[] tempArray;
 
         switch (grade){
             case grade1:
-                break;
+                System.out.print("1등! ");
+                return patternForFirst;
+
             case grade2:
+                System.out.print("2등! ");
+                tempArray=patternsForSecond.toArray();
+                idx = new Random().nextInt(patternsForSecond.size());
+                resultSlot =  (List<Integer>) tempArray[idx];
                 break;
+
             case grade3:
+                System.out.print("3등! ");
+                tempArray=patternsForThird.toArray();
+                idx = new Random().nextInt(patternsForThird.size());
+                resultSlot =  (List<Integer>) tempArray[idx];
                 break;
+
             case grade4:
+                System.out.print("4등! ");
+                tempArray=patternsForFourth.toArray();
+                idx = new Random().nextInt(patternsForFourth.size());
+                resultSlot =  (List<Integer>) tempArray[idx];
                 break;
             default:
+                System.out.print("5등! ");
+                tempArray=patternsForFifth.toArray();
+                idx = new Random().nextInt(patternsForFifth.size());
+                resultSlot =  (List<Integer>) tempArray[idx];
         }
+
         return resultSlot;
     }
 
-    List<Integer> getRandomSlot(){
-        return new Random().ints(1,8).limit(3).collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
-    }
-
-
-
-
-    void getFifth(){
-        patternsForFifth = (Set<List<Integer>>)((HashSet<List<Integer>>) allPatterns).clone();
-        patternsForFifth.removeAll(patternForFirst);
-        patternsForFifth.removeAll(patternsForSecond);
-        patternsForFifth.removeAll(patternsForThird);
-        patternsForFifth.removeAll(patternsForFourth);
-
-        //resultSlot = new Random().ints(1,8).limit(3).collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
-        //return resultSlot.get(0)==resultSlot.get(1) && resultSlot.get(1)==resultSlot.get(2) && resultSlot != patternForFirst ? resultSlot : createThird();
-
-    }
-
-
-//    boolean createThird(){ //create 아니고 그냥 get 이잖아...
-//        resultSlot = getRandomSlot();
-//       return resultSlot.get(0)==resultSlot.get(1) && resultSlot.get(1)==resultSlot.get(2) && resultSlot != patternForFirst ? patternsForThird.add(resultSlot) : createThird();
-//    }
 
     void createThird(){
-     //  List<Integer> thirds = new ArrayList<>();
-//        IntStream.rangeClosed(1,7).flatMap().forEach();
-    //    patternsForThird.parallelStream().flatMap(IntStream.rangeClosed(1,7).forEach((Integer n) -> {patternsForThird.add(n);}));
+        ArrayList pattern = IntStream.rangeClosed(1, 7).filter(n -> n!=7).mapToObj(n -> Arrays.asList(n,n,n)).collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+        patternsForThird.addAll(pattern);
     }
 
 
     void createFourth(){
+        // 4가 두번 연속으로 나오는 슬롯 중에 444 제외
+        ArrayList pattern1 = IntStream.rangeClosed(1, 7).filter(n -> n!=4).mapToObj(n -> Arrays.asList(4,4,n)).collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+        ArrayList pattern2 = IntStream.rangeClosed(1, 7).filter(n -> n!=4).mapToObj(n -> Arrays.asList(n,4,4)).collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
 
+        patternsForFourth.addAll(pattern1);
+        patternsForFourth.addAll(pattern2);
     }
 
+
+    void createFifth(){
+        patternsForFifth = (Set<List<Integer>>)((HashSet<List<Integer>>) allPatterns).clone();
+        patternsForFifth.remove(Arrays.asList(7,7,7));
+        patternsForFifth.removeAll(patternsForSecond);
+        patternsForFifth.removeAll(patternsForThird);
+        patternsForFifth.removeAll(patternsForFourth);
+    }
 
 
     static Set<List<Integer>> createAllPatterns(){
