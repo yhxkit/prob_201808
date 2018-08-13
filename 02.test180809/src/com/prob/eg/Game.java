@@ -12,8 +12,6 @@ public class Game {
     public Game(Player player){
         this.player = player;
         pattern = new SlotPattern(this);
-        this.start(player.money);
-        System.out.println("   총 "+player.lose+"번 베팅하여 "+player.win+"번 획득 "+player.money);
 
     }
 
@@ -47,6 +45,7 @@ public class Game {
 
     void stop() {
         System.out.println("Game over");
+        System.out.println("   총 "+player.lose+"번 베팅하여 "+player.win+"번 획득 "+player.money);
 
     }
 
