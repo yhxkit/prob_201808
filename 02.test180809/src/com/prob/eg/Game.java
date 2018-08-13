@@ -38,6 +38,8 @@ public class Game {
         }else if(grade==Grade.grade4){
             player.winMoney(betting);
         }
+
+
         System.out.println("슬롯 번호 "+this.pattern.getResultSlotWithGrade(grade));
 
         if(player.money>0) {start(player.money);}else{stop();}
@@ -80,6 +82,9 @@ public class Game {
         Scanner sc = new Scanner(System.in);
         return sc.nextLine();
     } //input end
+
+
+
 
 
 }

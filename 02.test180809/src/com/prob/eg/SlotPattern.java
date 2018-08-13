@@ -36,9 +36,6 @@ public class SlotPattern {
 
     public List<Integer> getResultSlotWithGrade(Game.Grade grade){
 
-        int idx;
-        Object[] tempArray;
-
         switch (grade){
             case grade1:
                 System.out.print("1등! ");
@@ -69,7 +66,7 @@ public class SlotPattern {
 
     List<Integer> getRandomSlot(Set<List<Integer>> patterns){
         Object[] tempArray  =patterns.toArray();
-        int idx = new Random().nextInt(patterns.size());
+        int idx = new Random().nextInt(patterns.size()); // 0~size-1 까지의 숫자 임의 생성
         return (List<Integer>) tempArray[idx];
     }
 
