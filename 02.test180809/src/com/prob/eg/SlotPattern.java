@@ -46,32 +46,31 @@ public class SlotPattern {
 
             case grade2:
                 System.out.print("2등! ");
-                tempArray=patternsForSecond.toArray();
-                idx = new Random().nextInt(patternsForSecond.size());
-                resultSlot =  (List<Integer>) tempArray[idx];
+                resultSlot = getRandomSlot(patternsForSecond);
                 break;
 
             case grade3:
                 System.out.print("3등! ");
-                tempArray=patternsForThird.toArray();
-                idx = new Random().nextInt(patternsForThird.size());
-                resultSlot =  (List<Integer>) tempArray[idx];
+                resultSlot = getRandomSlot(patternsForThird);
                 break;
 
             case grade4:
                 System.out.print("4등! ");
-                tempArray=patternsForFourth.toArray();
-                idx = new Random().nextInt(patternsForFourth.size());
-                resultSlot =  (List<Integer>) tempArray[idx];
+                resultSlot = getRandomSlot(patternsForFourth);
                 break;
+
             default:
                 System.out.print("5등! ");
-                tempArray=patternsForFifth.toArray();
-                idx = new Random().nextInt(patternsForFifth.size());
-                resultSlot =  (List<Integer>) tempArray[idx];
+                resultSlot = getRandomSlot(patternsForFifth);
         }
 
         return resultSlot;
+    }
+
+    List<Integer> getRandomSlot(Set<List<Integer>> patterns){
+        Object[] tempArray  =patterns.toArray();
+        int idx = new Random().nextInt(patterns.size());
+        return (List<Integer>) tempArray[idx];
     }
 
 
