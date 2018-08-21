@@ -26,6 +26,9 @@ public class ListController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(){
+
+        System.out.println("welcome...");
+
         return "home";
     }
 
