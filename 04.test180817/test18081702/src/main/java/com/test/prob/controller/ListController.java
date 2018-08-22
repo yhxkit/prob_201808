@@ -1,33 +1,38 @@
 package com.test.prob.controller;
 
 import com.test.prob.model.ListDao;
-import com.test.prob.model.entity.TagVo;
-import com.test.prob.model.entity.ToDoVo;
+import com.test.prob.model.entity.Tag;
+import com.test.prob.model.entity.ToDo;
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDate;
+import java.util.*;
 
-import javax.servlet.http.HttpServletRequest;
-
+@Log
 @Controller 
 public class ListController {
+
+
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ListController.class);
+
+
 
     @Autowired
     ListDao listDao;
 
-    private static String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping("/")
     public String home(){
-
-        System.out.println("welcome...");
+        log.info("welcome...");
 
         return "home";
     }
@@ -35,95 +40,90 @@ public class ListController {
     //입력 수정 등, 커맨드 객체로 받을 메서드의 Vo 파라미터 앞에 @requestBody = 415, @requestParam = 400 에러...
 
     @ResponseBody //뷰 없음
-    @RequestMapping(value="/list",  method=RequestMethod.GET)
-    public List<ToDoVo> getList() throws Exception{
+   // @RequestMapping(value="/list",  method=RequestMethod.GET)
+    @GetMapping("/list")
+    public List<ToDo> getList() throws Exception{
         
-        List<ToDoVo> test =listDao.selectAll();
-        System.out.println(test);
+        List<ToDo> test =listDao.selectAll();
+        log.info(test.toString());
         return test;
     }
 
 
     @ResponseBody //뷰 없음
-    @RequestMapping(value="/searchWithTag/{tag}",  method=RequestMethod.GET)
-    public List<ToDoVo> getListWithTag(@PathVariable String tag) throws Exception{
+    @GetMapping("/searchWithTag/{tag}")
+    public List<ToDo> getListWithTag(@PathVariable String tag) throws Exception{
        // System.out.println("검색 체크 : "+tag);
 
-        List<ToDoVo> test =listDao.selectAllWithTag(tag);
-        System.out.println(test);
+        List<ToDo> test =listDao.selectAllWithTag(tag);
+        log.info(test.toString());
         return test;
     }
 
 
 
-
-
     @ResponseBody
-    @RequestMapping(value="/add", method=RequestMethod.POST)
-    public void addOne(ToDoVo toDoBean) throws Exception{
-    	System.out.println("Insert data :"+toDoBean);
-
-        System.out.println(new Date());
-
-    	if(toDoBean.getDateFrom().equals("")||toDoBean.getDateFrom()==null){
-    	    toDoBean.setDateFrom(today);
-        }
-        if(toDoBean.getDateTo().equals("")||toDoBean.getDateTo()==null){
-            toDoBean.setDateTo(today);
-        }
+    @PostMapping("/add")
+    public void addOne(ToDo toDoBean) throws Exception{
+        log.info("Insert data :"+toDoBean);
 
     	listDao.insertOne(toDoBean);
     	
     }
 
     @ResponseBody
-    @RequestMapping(value="/{1}", method=RequestMethod.GET)
+    @GetMapping("/{1}")
     public List<Object> detailOne(@PathVariable("1") int idx) throws Exception {
-    	System.out.println("상세보기 "+idx);
+        log.info("상세보기 "+idx);
     	return listDao.selectOne(idx);
   	
     }
     
     @ResponseBody
-    @RequestMapping(value="/{1}", method=RequestMethod.DELETE)
-    public void deleteOne(@PathVariable("1") int idx) throws Exception {    	
-    	System.out.println("삭제 "+idx);
+    @DeleteMapping("/{1}")
+    public void deleteOne(@PathVariable("1") int idx) throws Exception {
+        log.info("삭제 "+idx);
     	 listDao.delOne(idx);
   	
     }
     
     @ResponseBody //
-    @RequestMapping(value="/{1}", method=RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8_VALUE) //왜 인서트는 받아오면서 여기서는 못받아와서 이렇게 짜야하는지?
+    @PutMapping(value="/{1}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE) //왜 인서트는 받아오면서 여기서는 못받아와서 이렇게 짜야하는지?
     public void editOne(@PathVariable("1") int idx, @RequestBody Map<String, Object> params) throws Exception {
-    	//json으로 보내서 @RequestBody를 적용한 MAP 으로만 받아지고, ToDoVo 커맨드 객체는 먹히지 않는다...
-    	
-    	System.out.println("수정 "+idx);
-    	System.out.println(params);
+    	//json으로 보내서 @RequestBody를 적용한 MAP 으로만 받아지고, ToDo 커맨드 객체는 먹히지 않는다...
 
-    	ToDoVo toDoBean = new ToDoVo();
+        log.info("수정 "+idx);
+        log.info(params.toString());
+
+    	ToDo toDoBean = new ToDo();
     	toDoBean.setToDoIdx(idx);
 
+    	String[] dateFrom = params.get("dateFrom").toString().split("-"); // 여기 어떻게 하지 ㅠ..?
+    	toDoBean.setDateFrom(LocalDate.of(Integer.parseInt(dateFrom[0]), Integer.parseInt(dateFrom[1]), Integer.parseInt(dateFrom[2])));
 
-
-    	toDoBean.setDateFrom((String)params.get("dateFrom"));
-    	toDoBean.setDateTo((String)params.get("dateTo"));
-
-        if(toDoBean.getDateFrom().equals("")||toDoBean.getDateFrom()==null){
-            toDoBean.setDateFrom(today);
-        }
-        if(toDoBean.getDateTo().equals("")||toDoBean.getDateTo()==null){
-            toDoBean.setDateTo(today);
-        }
+        String[] dateTo = params.get("dateTo").toString().split("-");
+        toDoBean.setDateTo(LocalDate.of(Integer.parseInt(dateTo[0]), Integer.parseInt(dateTo[1]), Integer.parseInt(dateTo[2])));
 
     	toDoBean.setTitle((String)params.get("title"));
     	toDoBean.setTags((String)params.get("tags"));
     	toDoBean.setStatus((boolean)params.get("status"));
 
-    	System.out.println(toDoBean);
+        log.info(toDoBean.toString());
     	listDao.editOne(toDoBean);
   	
     }
 
 
+//    @ResponseBody //
+//    @PutMapping(value="/{1}", consumes = MediaType.APPLICATION_JSON_VALUE) //??
+//    public void editOne(@PathVariable("1") int idx, @RequestBody ToDo toDoBean) throws Exception {
+//        //json으로 보내서 @RequestBody를 적용한 MAP으로만 받아지고, ToDo 커맨드 객체는 먹히지 않는다...
+//
+//        System.out.println("수정 "+idx);
+//
+//        System.out.println(toDoBean);
+//        //listDao.editOne(toDoBean);
+
+ //   }
 
 }

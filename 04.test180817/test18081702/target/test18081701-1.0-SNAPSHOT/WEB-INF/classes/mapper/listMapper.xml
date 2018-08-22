@@ -5,31 +5,35 @@
 
 <mapper namespace="com.test.prob.model.ListDao">
 
-    <select id="selectAll" resultType="com.test.prob.model.entity.ToDoVo">
+    <select id="selectAll" resultType="com.test.prob.model.entity.ToDo">
 	  SELECT * FROM TODOLIST ORDER BY STATUS, DATETO ASC 
 	</select>
 	
-	<insert id="insertToDo" parameterType="com.test.prob.model.entity.ToDoVo">
+	<insert id="insertToDo" parameterType="com.test.prob.model.entity.ToDo">
 		INSERT INTO TODOLIST (DATEFROM, DATETO, TITLE, STATUS) VALUES (#{dateFrom}, #{dateTo}, #{title}, #{status})
 		<selectKey keyProperty="toDoIdx" resultType="int" order="AFTER">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
 
-	<insert id="insertTag" parameterType="com.test.prob.model.entity.TagVo">
+	<insert id="insertTag" parameterType="com.test.prob.model.entity.Tag">
 		INSERT INTO TAGLIST (TODOIDX, TAG) VALUES (#{toDoIdx}, #{tag})
 	</insert>
 	
-	<select id="selectOne" parameterType="int" resultType="com.test.prob.model.entity.ToDoVo">
+	<select id="selectOne" parameterType="int" resultType="com.test.prob.model.entity.ToDo">
 		SELECT * FROM TODOLIST WHERE TODOIDX=#{toDoIdx} 
 	</select>
 
-	<select id="selectTagsForOneToDo" parameterType="int" resultType="com.test.prob.model.entity.TagVo">
+	<select id="selectTagsForOneToDo" parameterType="int" resultType="com.test.prob.model.entity.Tag">
 		SELECT * FROM TAGLIST WHERE TODOIDX=#{idxForTags}
 	</select>
 
 	<select id="selectIdxsForOneToDo" parameterType="String" resultType="int">
 		SELECT * FROM TAGLIST WHERE TAG=#{tag}
+	</select>
+
+	<select id="selectToDoWithTag" parameterType="String" resultType="com.test.prob.model.entity.ToDo">
+		   SELECT * FROM TODOLIST WHERE TODOIDX IN (SELECT TODOIDX FROM TAGLIST WHERE TAG=#{tag})
 	</select>
 
 	

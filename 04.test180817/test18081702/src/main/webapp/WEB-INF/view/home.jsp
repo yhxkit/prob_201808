@@ -165,13 +165,16 @@
 		var toDoIdx=$('#detailModal input').eq(5).val();
 
 	 	var param = JSON.stringify({
-		    'dateFrom':dateFrom,
-			'dateTo':dateTo, 
-			'title':title,
-			'tags':tags,
-			'status': false
+		    dateFrom: dateFrom,
+			dateTo: dateTo,
+			title: title,
+			tags: tags,
+			status: false
 			//,'toDoIdx':toDoIdx
-		}); 
+		});
+
+
+
 
 		console.log(param);
 		
@@ -179,6 +182,7 @@
 		url : 'http://localhost:8080/'+cont+$('.detail').eq(5).text(),
 		type : 'PUT',
         data : param,
+        headers :{'Accept': 'application/json'},
 		contentType:'application/json; charset=utf-8',
 		success : function(){
 			init(); //뒤의 목록을 샐고하는 역할... 이거 없으면 샐고 따로 안하면 수정반영 ㄴㄴ
@@ -220,8 +224,15 @@
 		$.getJSON('http://localhost:8080/'+cont+idx, function(data){
 
 
-            $('.detail').eq(0).text(data[0].dateFrom);
-			$('.detail').eq(1).text(data[0].dateTo);
+            var month = data[0].dateTo.monthValue;
+            if(month<10){month='0'+month;}
+            var day = data[0].dateTo.dayOfMonth;
+            if(day<10){day='0'+day;}
+
+
+
+            $('.detail').eq(0).text(data[0].dateFrom.year+'-'+month+'-'+day);
+			$('.detail').eq(1).text(data[0].dateTo.year+'-'+month+'-'+day);
 			$('.detail').eq(2).text(data[0].title);
 
 			var tagsForText="";
@@ -231,14 +242,16 @@
 			    tagsForLink+=("<a href='#' class='tagLink'>"+data[1][i].tag+"</a> ");
             }
 
+
+
 			$('.detail').eq(3).html(tagsForLink);
 
 			$('.detail').eq(4).text(data[0].status);
 			$('.detail').eq(5).text(data[0].toDoIdx);
 
 			//수정을 눌러도 값을 가져오도록..
-			$('#detailModal input').eq(0).val(data[0].dateFrom);
-			$('#detailModal input').eq(1).val(data[0].dateTo);
+			$('#detailModal input').eq(0).val(data[0].dateFrom.year+'-'+month+'-'+day);
+			$('#detailModal input').eq(1).val(data[0].dateTo.year+'-'+month+'-'+day);
 			$('#detailModal input').eq(2).val(data[0].title);
 			$('#detailModal input').eq(3).val(tagsForText);
 			$('#detailModal input').eq(4).val(data[0].status);
@@ -261,17 +274,23 @@
 
                 $(data).each(function (num, ele) {//첫번째 인자가 인덱스, 두번째 인자가 엘리먼트
 
+                    var month = ele.dateTo.monthValue;
+                    if(month<10){month='0'+month;}
+                    var day = ele.dateTo.dayOfMonth;
+                    if(day<10){day='0'+day;}
+
                     if (!ele.status) {
 
-                        listObj += '<tr><td hidden="hidden">' + ele.dateFrom + '</td>'
-                            + '<td>' + ele.dateTo
+
+                        listObj += '<tr><td hidden="hidden">' + ele.dateFrom.year+'-'+month+'-'+day + '</td>'
+                            + '<td>' + ele.dateTo.year+'-'+month+'-'+day
                             + '</td><td><a href="#" class="showThis" data-toggle="modal" data-target="#detailModal">'
                             + ele.title + '</a></td><td>'
                             + '<button type="button" class="btn btn-primary btn-sm">완료하기</button>'
                             + '</td><td hidden="hidden">' + ele.toDoIdx
                             + '</td><td hidden=""hidden">' + ele.tags + '</td></tr>';
                     } else {
-                        listObj += '<tr class="text-muted"><td class="col-md-2">' + ele.dateTo
+                        listObj += '<tr class="text-muted"><td class="col-md-2">' + ele.dateTo.year+'-'+month+'-'+day
                             + '</td><td class="col-md-5">' + ele.title + '</td><td class="col-md-1">'
                             + '<a href="#" class="deleteThis">삭제</a>'
                             + '</td><td hidden="hidden">' + ele.toDoIdx

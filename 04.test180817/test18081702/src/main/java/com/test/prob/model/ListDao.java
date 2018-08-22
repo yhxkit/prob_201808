@@ -1,18 +1,18 @@
 package com.test.prob.model;
 
-import com.test.prob.model.entity.TagVo;
-import com.test.prob.model.entity.ToDoVo;
+import com.test.prob.model.entity.Tag;
+import com.test.prob.model.entity.ToDo;
 
 import java.util.List;
 import java.util.Map;
 
 public interface ListDao {
 
-    List<ToDoVo> selectAll() throws Exception;
-    List<ToDoVo> selectAllWithTag(String tag) throws Exception;
+    List<ToDo> selectAll() throws Exception;
+    List<ToDo> selectAllWithTag(String tag) throws Exception;
     List<Object> selectOne(int idx) throws Exception;
     void delOne(int idx) throws Exception;
-    void insertOne(ToDoVo toDoBean) throws Exception;
-    void editOne(ToDoVo toDoBean) throws Exception;
+    void insertOne(ToDo toDoBean) throws Exception;
+    void editOne(ToDo toDoBean) throws Exception;
 
 }
