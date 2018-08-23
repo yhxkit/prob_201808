@@ -5,18 +5,6 @@
 		http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
 
-    <!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>
-        		classpath:spring/root-context.xml
-        </param-value>
-    </context-param>
-
-    <!-- Creates the Spring Container shared by all Servlets and Filters -->
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
 
     <filter>
         <filter-name>hiddenHttpMethodFilter</filter-name>
@@ -43,7 +31,10 @@
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>
+
                 config.JavaConfig
+                config.MvcConfig
+                config.ControllerConfig
                 <!--java 아래의 config 아래의 javaConfig.class 설정 이용-->
             </param-value>
         </init-param>

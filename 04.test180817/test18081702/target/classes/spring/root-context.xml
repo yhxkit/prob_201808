@@ -11,8 +11,6 @@
 
     <context:property-placeholder location="classpath:db.properties" />
 
-
-
     <!-- Root Context: defines shared resources visible to all other web components -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
         <property name="driverClass" value="${db.driver}" />

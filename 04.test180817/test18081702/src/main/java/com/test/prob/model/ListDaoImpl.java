@@ -10,8 +10,8 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
 import java.util.*;
 
-@Slf4j
 @Repository
+
 public class ListDaoImpl implements ListDao{
 
 
@@ -20,10 +20,17 @@ public class ListDaoImpl implements ListDao{
     @Autowired
     SqlSession sqlSession;
 
-
-
     String namespaceForToDo="com.test.prob.model.ListDao.";
     String namespaceForTag="com.test.prob.model.ListDao.";
+
+    public ListDaoImpl(){
+
+    }
+
+   public  ListDaoImpl(SqlSession sqlSession){
+        this.sqlSession = sqlSession;
+    }
+
 
     @Override
     public List<ToDo> selectAll() throws Exception {
