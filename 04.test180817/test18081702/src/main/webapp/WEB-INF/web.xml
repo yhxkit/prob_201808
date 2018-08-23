@@ -31,12 +31,24 @@
     <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+        <!--디스패처서블릿이 xml이 아닌 자바의 설정파일 사용하여 스프링 컨테이너를 설생하도록 설정-->
+        <init-param>
+            <param-name>contextClass</param-name>
+            <param-value>
+                org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+            </param-value>
+        </init-param>
+
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>
-                classpath:spring/appServlet/servlet-context.xml
+                config.JavaConfig
+                <!--java 아래의 config 아래의 javaConfig.class 설정 이용-->
             </param-value>
         </init-param>
+
+
         <load-on-startup>1</load-on-startup>
     </servlet>
 
