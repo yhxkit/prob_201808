@@ -11,34 +11,11 @@ public class Tag {
 	public Tag() { // 디폴트 생성자 없으면 오류...
 	}
 
-	public Tag(String tag) {
-		super();
+	public Tag(String tag) { //toDoidx exclude 할수 있나염...
 		this.tag = tag;
 	}
 
-	
-	/*public String getTag() {
-		return tag;
-	}
 
-	public void setTag(String tag) {
-		this.tag = tag;
-	}
-
-	public int getToDoIdx() {
-		return toDoIdx;
-	}
-
-	public void setToDoIdx(int toDoIdx) {
-		this.toDoIdx = toDoIdx;
-	}
-
-	@Override
-	public String toString() {
-		return "Tag [tag=" + tag +"]";
-	}
-	*/
-	
 	
 	
 }

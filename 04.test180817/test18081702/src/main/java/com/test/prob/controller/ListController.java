@@ -18,8 +18,6 @@ public class ListController {
 
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ListController.class);
 
-
-
     @Autowired
     ListDao listDao;
 
@@ -77,13 +75,13 @@ public class ListController {
     @DeleteMapping("/{1}")
     public void deleteOne(@PathVariable("1") int idx) throws Exception {
         log.info("삭제 "+idx);
-    	 listDao.delOne(idx);
+        listDao.delOne(idx);
   	
     }
     
-    @ResponseBody //
+    @ResponseBody
     @PutMapping(value="/{1}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE) //왜 인서트는 받아오면서 여기서는 못받아와서 이렇게 짜야하는지?
-    public void editOne(@PathVariable("1") int idx, @RequestBody Map<String, Object> params) throws Exception {
+    public void editOne(@PathVariable("1") int idx, @RequestBody Map<String, Object> params)  {
     	//json으로 보내서 @RequestBody를 적용한 MAP 으로만 받아지고, ToDo 커맨드 객체는 먹히지 않는다...
 
         log.info("수정 "+idx);
@@ -91,20 +89,26 @@ public class ListController {
 
     	ToDo toDoBean = new ToDo();
     	toDoBean.setToDoIdx(idx);
-
-    	String[] dateFrom = params.get("dateFrom").toString().split("-"); // 여기 어떻게 하지 ㅠ..?
-    	toDoBean.setDateFrom(LocalDate.of(Integer.parseInt(dateFrom[0]), Integer.parseInt(dateFrom[1]), Integer.parseInt(dateFrom[2])));
-
-        String[] dateTo = params.get("dateTo").toString().split("-");
-        toDoBean.setDateTo(LocalDate.of(Integer.parseInt(dateTo[0]), Integer.parseInt(dateTo[1]), Integer.parseInt(dateTo[2])));
-
-    	toDoBean.setTitle((String)params.get("title"));
-    	toDoBean.setTags((String)params.get("tags"));
-    	toDoBean.setStatus((boolean)params.get("status"));
+        toDoBean.setTitle((String)params.get("title"));
+        toDoBean.setTags((String)params.get("tags"));
+        toDoBean.setStatus((boolean)params.get("status"));
 
         log.info(toDoBean.toString());
-    	listDao.editOne(toDoBean);
-  	
+
+        String[] dateFrom = params.get("dateFrom").toString().split("-"); // 여기 어떻게 하지 ㅠ..?
+        String[] dateTo = params.get("dateTo").toString().split("-");
+        try {
+            toDoBean.setDateFrom(LocalDate.of(Integer.parseInt(dateFrom[0]), Integer.parseInt(dateFrom[1]), Integer.parseInt(dateFrom[2])));
+            toDoBean.setDateTo(LocalDate.of(Integer.parseInt(dateTo[0]), Integer.parseInt(dateTo[1]), Integer.parseInt(dateTo[2])));
+
+            listDao.editOne(toDoBean);
+        }catch(Exception e){
+            log.info(e.toString());
+        }
+
+
+
+
     }
 
 
