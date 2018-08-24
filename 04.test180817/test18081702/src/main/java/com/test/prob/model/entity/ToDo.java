@@ -1,21 +1,15 @@
 package com.test.prob.model.entity;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.mysql.fabric.xmlrpc.base.Array;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 public class ToDo {
+
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ToDo.class);
 
      private int toDoIdx;
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -36,9 +30,45 @@ public class ToDo {
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
         this.title = title;
-        this.tags = tags;
+        this.tags = tags.trim();
 
         this.status=false;
+
+    }
+
+
+    public void setDateFrom(LocalDate dateFrom) {
+
+        Optional from = Optional.ofNullable(dateFrom);
+
+        if (!from.isPresent()) {
+            this.dateFrom = LocalDate.now();
+        }else {
+            this.dateFrom=(LocalDate) from.get();
+        }
+
+
+    }
+
+        public void setDateTo(LocalDate dateTo) {
+
+            Optional to = Optional.ofNullable(dateTo);
+
+            if (!to.isPresent()) {
+                this.dateTo = LocalDate.now();
+            }else {
+                this.dateTo = (LocalDate) to.get();
+            }
+        }
+
+    public  void setTitle(String title){
+        Optional t= Optional.ofNullable(title.trim());
+
+        if(!t.isPresent() || t.get().toString().equals("")) {
+            this.title = "할 일을 설정하지 않았습니다";
+        }else {
+            this.title = title;
+        }
 
     }
 

@@ -1,7 +1,6 @@
 package com.test.prob.controller;
 
 import com.test.prob.model.ListDao;
-import com.test.prob.model.entity.Tag;
 import com.test.prob.model.entity.ToDo;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,7 +8,6 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.*;
 
 @Controller 
@@ -29,10 +27,7 @@ public class ListController {
         return "home";
     }
 
-    //입력 수정 등, 커맨드 객체로 받을 메서드의 Vo 파라미터 앞에 @requestBody = 415, @requestParam = 400 에러...
-
     @ResponseBody //뷰 없음
-   // @RequestMapping(value="/list",  method=RequestMethod.GET)
     @GetMapping("/list")
     public List<ToDo> getList() throws Exception{
         
@@ -76,48 +71,19 @@ public class ListController {
     public void deleteOne(@PathVariable("1") int idx) throws Exception {
         log.info("삭제 "+idx);
         listDao.delOne(idx);
+
   	
     }
     
-   /* @ResponseBody
-    @PutMapping(value="/{1}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE) //왜 인서트는 받아오면서 여기서는 못받아와서 이렇게 짜야하는지?
-    public void editOne(@PathVariable("1") int idx, @RequestBody Map<String, Object> params)  {
-    	//json으로 보내서 @RequestBody를 적용한 MAP 으로만 받아지고, ToDo 커맨드 객체는 먹히지 않는다...
+
+
+    @ResponseBody
+    @PutMapping(value="/{1}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void editOne(@PathVariable("1") int idx, @RequestBody ToDo toDoBean) throws Exception {
+        //날짜 값 desiralizing 때문에 jackson datatype 라이브러리 없이는 파싱이 되지 않음.. //입력 수정 등, 커맨드 객체로 받을 메서드의 Vo 파라미터 앞에 @requestBody = 415, @requestParam = 400 에러...
+
 
         log.info("수정 "+idx);
-        log.info(params.toString());
-
-    	ToDo toDoBean = new ToDo();
-    	toDoBean.setToDoIdx(idx);
-        toDoBean.setTitle((String)params.get("title"));
-        toDoBean.setTags((String)params.get("tags"));
-        toDoBean.setStatus((boolean)params.get("status"));
-
-        log.info(toDoBean.toString());
-
-        String[] dateFrom = params.get("dateFrom").toString().split("-"); // 여기 어떻게 하지 ㅠ..?
-        String[] dateTo = params.get("dateTo").toString().split("-");
-        try {
-            toDoBean.setDateFrom(LocalDate.of(Integer.parseInt(dateFrom[0]), Integer.parseInt(dateFrom[1]), Integer.parseInt(dateFrom[2])));
-            toDoBean.setDateTo(LocalDate.of(Integer.parseInt(dateTo[0]), Integer.parseInt(dateTo[1]), Integer.parseInt(dateTo[2])));
-
-            listDao.editOne(toDoBean);
-        }catch(Exception e){
-            log.info(e.toString());
-        }
-
-
-
-
-    }*/
-
-
-    @ResponseBody //
-    @PutMapping(value="/{1}", consumes = MediaType.APPLICATION_JSON_VALUE) //??
-    public void editOne(@PathVariable("1") int idx, @RequestBody ToDo toDoBean) throws Exception { //날짜 값 desiralizing 때문에 jackson datatype 라이브러리 없이는 파싱이 되지 않음..
-
-        log.info("수정 "+idx);
-
         log.info(toDoBean.toString());
         listDao.editOne(toDoBean);
 
