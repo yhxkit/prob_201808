@@ -181,11 +181,11 @@
 
 		<!--for ajax~getJSON(get object returning) without searching view : get all list page -->
 		<!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-core-asl -->
-	<!--	<dependency>
+		<dependency>
 		    <groupId>org.codehaus.jackson</groupId>
 		    <artifactId>jackson-core-asl</artifactId>
 		    <version>1.9.13</version>
-		</dependency>-->
+		</dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -199,6 +199,12 @@
 		    <artifactId>jackson-databind</artifactId>
 		    <version>2.9.4</version>
 		</dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.9.5</version>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>

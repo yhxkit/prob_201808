@@ -79,7 +79,7 @@ public class ListController {
   	
     }
     
-    @ResponseBody
+   /* @ResponseBody
     @PutMapping(value="/{1}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE) //왜 인서트는 받아오면서 여기서는 못받아와서 이렇게 짜야하는지?
     public void editOne(@PathVariable("1") int idx, @RequestBody Map<String, Object> params)  {
     	//json으로 보내서 @RequestBody를 적용한 MAP 으로만 받아지고, ToDo 커맨드 객체는 먹히지 않는다...
@@ -109,19 +109,18 @@ public class ListController {
 
 
 
+    }*/
+
+
+    @ResponseBody //
+    @PutMapping(value="/{1}", consumes = MediaType.APPLICATION_JSON_VALUE) //??
+    public void editOne(@PathVariable("1") int idx, @RequestBody ToDo toDoBean) throws Exception { //날짜 값 desiralizing 때문에 jackson datatype 라이브러리 없이는 파싱이 되지 않음..
+
+        log.info("수정 "+idx);
+
+        log.info(toDoBean.toString());
+        listDao.editOne(toDoBean);
+
     }
-
-
-//    @ResponseBody //
-//    @PutMapping(value="/{1}", consumes = MediaType.APPLICATION_JSON_VALUE) //??
-//    public void editOne(@PathVariable("1") int idx, @RequestBody ToDo toDoBean) throws Exception {
-//        //json으로 보내서 @RequestBody를 적용한 MAP으로만 받아지고, ToDo 커맨드 객체는 먹히지 않는다...
-//
-//        System.out.println("수정 "+idx);
-//
-//        System.out.println(toDoBean);
-//        //listDao.editOne(toDoBean);
-
- //   }
 
 }

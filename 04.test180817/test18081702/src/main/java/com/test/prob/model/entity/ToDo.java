@@ -7,17 +7,20 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mysql.fabric.xmlrpc.base.Array;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 public class ToDo {
 
      private int toDoIdx;
-
+    @JsonFormat(pattern = "yyyy-MM-dd")
      private LocalDate dateFrom;
+    @JsonFormat(pattern = "yyyy-MM-dd")
      private LocalDate dateTo;
 
      private String title;
