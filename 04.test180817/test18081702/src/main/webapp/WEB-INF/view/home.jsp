@@ -229,12 +229,17 @@
 
 
 	function insertOne() {
-		var data =$('#myModal form').serialize();
+		var data=$('#myModal form').serialize();
+
 		console.log(data);
 		$.post('add', data, function(){
-			//init(); //그냥 init으로 샐고하면 새로 입력할 때 먼저 썼던 할일이 계속 남아있어서 리로드해줌..
 			window.location.reload();
-		}).done(function(){alert("할 일을 등록했습니다");}).error(function () {alert("등록 실패ㅠㅠ"); });
+		}).done(function(){
+		    alert("할 일을 등록했습니다");
+		}).fail(function (da) {
+		    alert("등록 실패ㅠㅠ"+JSON.stringify(da));
+		});
+
 	}
 
 
@@ -348,11 +353,11 @@
     		  
     		  <label for="dateFrom, dateTo">날짜 설정</label>
     		    <div class='input-group date'> 
-                    <input type='text' class="form-control" name="dateFrom" id="datetimepicker1" placeholder="시작일"/>
+                    <input type='text' class="form-control" name="dateFromStr" id="datetimepicker1" placeholder="시작일"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
-                    <input type='text' class="form-control" name="dateTo" id="datetimepicker2" placeholder="종료일"/>
+                    <input type='text' class="form-control" name="dateToStr" id="datetimepicker2" placeholder="종료일"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>

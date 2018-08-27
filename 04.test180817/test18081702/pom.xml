@@ -11,16 +11,22 @@
     <packaging>war</packaging>
     <properties>
         <java-version>1.8</java-version>
-        <org.springframework-version>4.3.14.RELEASE</org.springframework-version>
+        <hibernate.version>5.2.6.Final</hibernate.version>
+        <org.springframework-version>4.3.5.RELEASE</org.springframework-version>
         <org.aspectj-version>1.6.10</org.aspectj-version>
         <org.slf4j-version>1.6.6</org.slf4j-version>
-        
-        
+
+
     </properties>
 
 
     <dependencies>
-
+        <!-- JPA 추가 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -44,6 +50,16 @@
             <artifactId>spring-jdbc</artifactId>
             <version>${org.springframework-version}</version>
         </dependency>
+
+
+        <!-- JPA 추가 -->
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
 
         <!-- AspectJ -->
         <dependency>
@@ -119,8 +135,6 @@
         </dependency>
 
 
-
-
         <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -133,7 +147,6 @@
             <artifactId>mybatis-spring</artifactId>
             <version>1.3.1</version>
         </dependency>
-
 
 
         <!-- Logging -->
@@ -179,13 +192,13 @@
             <scope>runtime</scope>
         </dependency>
 
-		<!--for ajax~getJSON(get object returning) without searching view : get all list page -->
-		<!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-core-asl -->
-		<dependency>
-		    <groupId>org.codehaus.jackson</groupId>
-		    <artifactId>jackson-core-asl</artifactId>
-		    <version>1.9.13</version>
-		</dependency>
+        <!--for ajax~getJSON(get object returning) without searching view : get all list page -->
+        <!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-core-asl -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -194,11 +207,11 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-databind</artifactId>
-		    <version>2.9.4</version>
-		</dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.4</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>

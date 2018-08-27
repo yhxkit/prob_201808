@@ -50,6 +50,15 @@ public class ToDo {
 
     }
 
+    public void setDateFromStr(String dateFrom) {
+        this.dateFrom = LocalDate.parse(dateFrom);
+    }
+
+    public void setDateToStr(String dateTo) { //입력시 localdate 타입으로 파싱 안됨... String 값을 받아염..
+        this.dateTo = LocalDate.parse(dateTo);
+    }
+
+
         public void setDateTo(LocalDate dateTo) {
 
             Optional to = Optional.ofNullable(dateTo);
