@@ -6,11 +6,13 @@
 		http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
 
-    <persistence-unit name="jpastart" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="testjpa" transaction-type="RESOURCE_LOCAL">
         <class>com.test.prob.model.entity.ToDo</class>
         <class>com.test.prob.model.entity.Tag</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
-        <properties>
+
+     <!--   SpringConfig의 자바 설정으로 옮겼으므로 엔티티로 사용한 클래스 목록만 설정하고 있다.ㄴ
+            <properties>
             <property name="javax.persistence.jdbc.driver"
                       value="com.mysql.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url"
@@ -28,7 +30,7 @@
             <property name="hibernate.c3p0.timeout" value="500" />
             <property name="hibernate.c3p0.idle_test_period"
                       value="2000" />
-        </properties>
+        </properties>-->
 
     </persistence-unit>
 

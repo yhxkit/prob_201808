@@ -38,37 +38,40 @@ public class ToDo {
 
 
     public void setDateFrom(LocalDate dateFrom) {
-
         Optional from = Optional.ofNullable(dateFrom);
-
         if (!from.isPresent()) {
             this.dateFrom = LocalDate.now();
         }else {
             this.dateFrom=(LocalDate) from.get();
         }
-
-
     }
 
+
+    public void setDateTo(LocalDate dateTo) {
+        Optional to = Optional.ofNullable(dateTo);
+        if (!to.isPresent()) {
+            this.dateTo = LocalDate.now();
+        }else {
+            this.dateTo = (LocalDate) to.get();
+        }
+    }
+
+
+
     public void setDateFromStr(String dateFrom) {
+
+        if(dateFrom.equals("")){this.dateFrom=LocalDate.now(); return;}
         this.dateFrom = LocalDate.parse(dateFrom);
     }
 
-    public void setDateToStr(String dateTo) { //입력시 localdate 타입으로 파싱 안됨... String 값을 받아염..
+    public void setDateToStr(String dateTo) { //입력 시 localdate 타입으로 파싱 안됨... String 값을 받아염..
+
+        if(dateTo.equals("")){this.dateTo=LocalDate.now(); return;}
         this.dateTo = LocalDate.parse(dateTo);
     }
 
 
-        public void setDateTo(LocalDate dateTo) {
 
-            Optional to = Optional.ofNullable(dateTo);
-
-            if (!to.isPresent()) {
-                this.dateTo = LocalDate.now();
-            }else {
-                this.dateTo = (LocalDate) to.get();
-            }
-        }
 
     public  void setTitle(String title){
         Optional t= Optional.ofNullable(title.trim());
