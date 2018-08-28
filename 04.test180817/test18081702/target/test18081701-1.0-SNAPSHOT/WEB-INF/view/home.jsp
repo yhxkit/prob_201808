@@ -233,7 +233,6 @@
 
 		console.log(data);
 		$.post('add', data, function(){
-			init(); //그냥 init으로 샐고하면 새로 입력할 때 먼저 썼던 할일이 계속 남아있어서 리로드해줌..
 			window.location.reload();
 		}).done(function(){
 		    alert("할 일을 등록했습니다");
