@@ -20,18 +20,20 @@ public class ControllerConfig extends WebMvcConfigurerAdapter {
 
         log.info("컨트롤러~");
 
-        registry.addViewController("/").setViewName("home");
+        //registry.addViewController("/").setViewName("home");
 
     }
 
 
-    @Bean
-    public ListController listController (){
-//여기서 listdao set 안해줘도 자동 주입 되는거같음...
-     ListController listc = new ListController();
-     return listc;
 
-    }
+//    @Bean
+//    public ListController listController (){
+////여기서 listdao set 안해줘도 자동 주입 되는거같음...
+//     ListController listc = new ListController();
+//     return listc;
+//
+//    }
+
 
 
 

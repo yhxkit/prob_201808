@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>180817 Todoist</title>
+    <title>180817 Todoist1</title>
     
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
 
@@ -69,6 +69,8 @@
 		
 			var idx=$(this).parent().next().next().text();
 			selectOne(idx);
+
+
 		});
 
 
@@ -117,6 +119,7 @@
 		$('#detailModal .modal-footer button').eq(1).click(function(){//상세 삭제 버튼 클릭시 이벤트
 
 			var idx = $('.detail').eq(5).text();
+
 			deleteOne(idx);//삭제
 			$('#detailModal').modal('hide'); //상세페이지 숨김
             window.location.reload();
@@ -252,26 +255,29 @@
 
 			var tagsForText="";
 			var tagsForLink="";
-			for(var i=0; i<data[1].length; i++){
-			    tagsForText+=(data[1][i].tag+" ");
-			    tagsForLink+=("<a href='#' class='tagLink'>"+data[1][i].tag+"</a> ");
-            }
+		/*	for(var i=0; i<data[0].length; i++){
+			    tagsForText+=(data[0][i].tags+" ");
+			    tagsForLink+=("<a href='#' class='tagLink'>"+data[0][i].tags+"</a> ");
+            }*/
 
 			$('.detail').eq(3).html(tagsForLink);
 
-			$('.detail').eq(4).text(data[0].status);
-			$('.detail').eq(5).text(data[0].toDoIdx);
+            $('.detail').eq(4).text(data[0].status);
+            $('.detail').eq(5).text(data[0].toDoIdx);
+
 
 			//수정을 눌러도 값을 가져오도록..
 			$('#detailModal input').eq(0).val(data[0].dateFrom);
 			$('#detailModal input').eq(1).val(data[0].dateTo);
 			$('#detailModal input').eq(2).val(data[0].title);
-			$('#detailModal input').eq(3).val(tagsForText);
-			$('#detailModal input').eq(4).val(data[0].status);
-			$('#detailModal input').eq(5).val(data[0].toDoIdx);
+            $('#detailModal input').eq(3).val(tagsForText);
+            $('#detailModal input').eq(4).val(data[0].status);
+            $('#detailModal input').eq(5).val(data[0].toDoIdx);
+
 
 
 		});
+
 	}
 	
 	
@@ -296,7 +302,7 @@
                             + ele.title + '</a></td><td>'
                             + '<button type="button" class="btn btn-primary btn-sm">완료하기</button>'
                             + '</td><td hidden="hidden">' + ele.toDoIdx
-                            + '</td><td hidden=""hidden">' + ele.tags + '</td></tr>';
+                            + '</td><td hidden="hidden">' + ele.tags + '</td></tr>';
                     } else {
                         listObj += '<tr class="text-muted"><td class="col-md-2">' + ele.dateTo
                             + '</td><td class="col-md-5">' + ele.title + '</td><td class="col-md-1">'
@@ -425,7 +431,7 @@
           		
           		<p hidden="hidden">
           			<span class="detail"></span>
-          			<input type="hidden" id="status">
+          			<input  type="hidden" id="status">
           		</p>
           		<p hidden="hidden">         			
           			<span class="detail"></span>

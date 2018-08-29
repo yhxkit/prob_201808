@@ -6,13 +6,21 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
 import java.util.*;
 
 
-@Repository
+//@Repository
 public class ListDaoImpl implements ListDao{
 
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ListDaoImpl.class);
+
+
+   // @PersistenceContext
+    private EntityManager em;
+
 
     @Autowired
     SqlSession sqlSession;

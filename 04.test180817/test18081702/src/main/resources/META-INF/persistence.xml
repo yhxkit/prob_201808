@@ -9,6 +9,7 @@
     <persistence-unit name="testjpa" transaction-type="RESOURCE_LOCAL">
         <class>com.test.prob.model.entity.ToDo</class>
         <class>com.test.prob.model.entity.Tag</class>
+        <!--관리할 엔티티 클래스들-->
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
      <!--   SpringConfig의 자바 설정으로 옮겼으므로 엔티티로 사용한 클래스 목록만 설정하고 있다.ㄴ

@@ -10,20 +10,20 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
-import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = "com.test.prob")// com.test.prob 패키지에 위치한 스프링빈을 자동으로 등록하도록 함
 @EnableJpaRepositories(basePackages = "com.test.prob") // 스프링 데이터 JPA 설정... 리포지토리를 이용해서 반복되는 기본 기능 구조에 대한 구현을 줄일 수 있음
 public class SpringConfig {
 
     @Bean(destroyMethod = "close")
-    public DataSource dataSource() { //db 연결은 위한 dataSource 설정
+    public ComboPooledDataSource dataSource() { //db 연결은 위한 dataSource 설정...
+        // 왜 예제처럼 그냥 DataSource는 리턴타입으로 설정했을 때 디스트로이 메서드에 에러나지?
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         try {
             dataSource.setDriverClass("com.mysql.jdbc.Driver");

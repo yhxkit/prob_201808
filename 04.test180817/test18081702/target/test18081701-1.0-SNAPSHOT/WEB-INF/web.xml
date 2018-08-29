@@ -31,10 +31,10 @@
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>
-
-                config.JavaConfig
+               <!-- config.JavaConfig-->
                 config.MvcConfig
-                config.ControllerConfig
+             <!--   config.ControllerConfig-->
+                config.SpringConfig
                 <!--java 아래의 config 아래의 javaConfig.class 설정 이용-->
             </param-value>
         </init-param>

@@ -1,7 +1,7 @@
 package com.test.prob.controller;
 
-import com.test.prob.model.ListDao;
 import com.test.prob.model.entity.ToDo;
+import com.test.prob.service.ListService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.MediaType;
@@ -16,12 +16,23 @@ public class ListController {
 
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ListController.class);
 
+//    @Autowired
+//    ListDao listDao;
+
     @Autowired
-    ListDao listDao;
+    private ListService listService; //프로퍼티에 바로 오토와이어드는 안되나?
+/*
+
+    @Autowired
+    public void setListService(ListService listService){
+        this.listService = listService;
+    }
+*/
+
 
 
     @GetMapping("/")
-    public String home(){
+    public String home() {
         log.info("welcome...");
 
         return "home";
@@ -31,7 +42,8 @@ public class ListController {
     @GetMapping("/list")
     public List<ToDo> getList() throws Exception{
         
-        List<ToDo> test =listDao.selectAll();
+        //List<ToDo> test =listDao.selectAll();
+        List<ToDo> test = listService.getAllToDo();
         log.info(test.toString());
         return test;
     }
@@ -42,7 +54,8 @@ public class ListController {
     public List<ToDo> getListWithTag(@PathVariable String tag) throws Exception{
        // System.out.println("검색 체크 : "+tag);
 
-        List<ToDo> test =listDao.selectAllWithTag(tag);
+        //List<ToDo> test =listDao.selectAllWithTag(tag);
+        List<ToDo> test = new ArrayList<>();
         log.info(test.toString());
         return test;
     }
@@ -54,23 +67,30 @@ public class ListController {
     public void addOne(ToDo toDoBean) throws Exception{
         log.info("Insert data :"+toDoBean);
 
-    	listDao.insertOne(toDoBean);
+    	//listDao.insertOne(toDoBean);
     	
     }
 
     @ResponseBody
     @GetMapping("/{1}")
-    public List<Object> detailOne(@PathVariable("1") int idx) throws Exception {
+    public List<ToDo> detailOne(@PathVariable("1") int idx) throws Exception {
         log.info("상세보기 "+idx);
-    	return listDao.selectOne(idx);
+    //	return listDao.selectOne(idx);
+            List<ToDo> aaa = Arrays.asList(listService.selectOne(idx));
+            log.info(aaa.toString());
+        return aaa;
+
   	
     }
     
     @ResponseBody
     @DeleteMapping("/{1}")
+   // @RequestMapping(value="/{1}", method = RequestMethod.DELETE)
     public void deleteOne(@PathVariable("1") int idx) throws Exception {
         log.info("삭제 "+idx);
-        listDao.delOne(idx);
+    //    listDao.delOne(idx);
+
+        listService.deleteOne(idx);
 
   	
     }
@@ -85,7 +105,7 @@ public class ListController {
 
         log.info("수정 "+idx);
         log.info(toDoBean.toString());
-        listDao.editOne(toDoBean);
+    //    listDao.editOne(toDoBean);
 
     }
 
