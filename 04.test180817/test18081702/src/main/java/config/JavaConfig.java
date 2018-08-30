@@ -1,3 +1,4 @@
+/*
 package config;
 
 import com.test.prob.model.ListDao;
@@ -73,3 +74,4 @@ public SqlSessionFactory sqlSessionFactory() throws Exception{
 
 
  }
+*/

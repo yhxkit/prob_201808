@@ -53,9 +53,8 @@ public class ListController {
     @GetMapping("/searchWithTag/{tag}")
     public List<ToDo> getListWithTag(@PathVariable String tag) throws Exception{
        // System.out.println("검색 체크 : "+tag);
-
-        //List<ToDo> test =listDao.selectAllWithTag(tag);
-        List<ToDo> test = new ArrayList<>();
+        log.info(tag);
+        List<ToDo> test = listService.searchByTag(tag);
         log.info(test.toString());
         return test;
     }
@@ -66,6 +65,7 @@ public class ListController {
     @PostMapping("/add")
     public void addOne(ToDo toDoBean) throws Exception{
         log.info("Insert data :"+toDoBean);
+        listService.insertOne(toDoBean);
 
     	//listDao.insertOne(toDoBean);
     	
@@ -106,6 +106,8 @@ public class ListController {
         log.info("수정 "+idx);
         log.info(toDoBean.toString());
     //    listDao.editOne(toDoBean);
+
+        listService.edtiOne(toDoBean);
 
     }
 

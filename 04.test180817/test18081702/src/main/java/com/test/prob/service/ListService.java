@@ -19,9 +19,7 @@ public class ListService {
         this.listRepository = listRepository;
     }
 
-
-
-    //조회기능이라서 Transactional 없이..
+    //    @Transactional 트랜잭셔널을 왜 서비스에서 달지...? 여기서 달아도 적용이 되나..?
     public List<ToDo> getAllToDo() {
         List<ToDo> result = listRepository.findAll();
         return result;
@@ -31,16 +29,26 @@ public class ListService {
         return listRepository.findOne(toDoIdx);
     }
 
+    public List<ToDo> searchByTag(String tag){
+        return listRepository.findByTagsTag(tag);
+    }
 
-    @Transactional
     public void deleteOne(int toDoIdx){
 
         ToDo toDoBean = listRepository.findOne(toDoIdx);
+
         listRepository.delete(toDoBean);
     }
 
 
+    public void insertOne(ToDo toDoBean){
+        listRepository.save(toDoBean);
+    }
 
+    public void  edtiOne(ToDo toDoBean){
+        listRepository.edit(toDoBean);
+
+    }
 
 
 

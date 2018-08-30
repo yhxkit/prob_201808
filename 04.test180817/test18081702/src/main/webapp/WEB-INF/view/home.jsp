@@ -36,11 +36,11 @@
 		var show = true;
 		init();
 		
-	       $('#datetimepicker1').datetimepicker({	//시작일      	 
+	       $('.datetimepicker1').datetimepicker({	//시작일
 	     			format: 'YYYY-MM-DD'
 		     });
 			
-            $('#datetimepicker2').datetimepicker({  //종료일 
+            $('.datetimepicker2').datetimepicker({  //종료일
             		format: 'YYYY-MM-DD'
              });
 	
@@ -255,16 +255,16 @@
 
 			var tagsForText="";
 			var tagsForLink="";
-		/*	for(var i=0; i<data[0].length; i++){
-			    tagsForText+=(data[0][i].tags+" ");
-			    tagsForLink+=("<a href='#' class='tagLink'>"+data[0][i].tags+"</a> ");
-            }*/
+
+			for(var i=0; i<data[0].tagList.length; i++){
+			    tagsForText+=(data[0].tagList[i].tag+" ");
+			    tagsForLink+=("<a href='#' class='tagLink'>"+data[0].tagList[i].tag+"</a> ");
+            }
 
 			$('.detail').eq(3).html(tagsForLink);
 
             $('.detail').eq(4).text(data[0].status);
             $('.detail').eq(5).text(data[0].toDoIdx);
-
 
 			//수정을 눌러도 값을 가져오도록..
 			$('#detailModal input').eq(0).val(data[0].dateFrom);
@@ -357,13 +357,14 @@
             <form>
     		  <div class="form-group">
     		  
-    		  <label for="dateFrom, dateTo">날짜 설정</label>
+    		  <label for="dateFrom dateTo">날짜 설정</label>
     		    <div class='input-group date'> 
-                    <input type='text' class="form-control" name="dateFromStr" id="datetimepicker1" placeholder="시작일"/>
+                    <input type='text' class="datetimepicker1 form-control" name="dateFromStr" placeholder="시작일"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
-                    <input type='text' class="form-control" name="dateToStr" id="datetimepicker2" placeholder="종료일"/>
+
+                    <input type='text' class="datetimepicker2 form-control"  name="dateToStr" placeholder="종료일"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -406,17 +407,21 @@
             <h4 class="modal-title">수정&삭제페이지</h4>
           </div>
           <div class="modal-body">
-         
-          		<p>
+              <p>
           			<label for="dateFrom">시작일</label>
           			<span class="detail"></span>
-          			<input type="hidden" id="dateFrom">
+          			<input type="hidden" id="dateFrom"  class="form-control datetimepicker2" name="dateFromStr"  />
+
+
           		</p>
           		<p>
           			<label for="dateTo">마감일</label>
           			<span class="detail"></span>
-          			<input type="hidden" id="dateTo">
+          			<input type="hidden" id="dateTo" class="form-control datetimepicker2" name="dateToStr" />
+
+
           		</p>
+
           		<p>
           			<label for="title">할 일</label>
           			<span class="detail"></span>
