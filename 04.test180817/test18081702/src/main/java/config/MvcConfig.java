@@ -2,7 +2,6 @@ package config;
 //JSP를 위한 뷰리졸버 설정
 //디폴트 서블릿 핸들러 설정
 
-import com.test.prob.model.ListDao;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +16,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan(basePackages = "com.test.prob")// com.test.prob 패키지에 위치한 스프링빈을 자동으로 등록하도록 함
 public class MvcConfig extends WebMvcConfigurerAdapter {
 
-    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ListDao.class);
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(MvcConfig.class);
 
     //JSP를 위한 viewResolver를 설정할때에는 configureViewResolvers() 메서드를 오버라이드
 //    @Override

@@ -122,14 +122,16 @@
 
 			deleteOne(idx);//삭제
 			$('#detailModal').modal('hide'); //상세페이지 숨김
-            window.location.reload();
+            //window.location.reload();
+          //  init();
 		});
 		
 		$(document).on('click','table .deleteThis',function(e) { //완료된 리스트 중에서 삭제하기
 			e.preventDefault();
 			var idx=$(this).parent().next().text();
 			deleteOne(idx);
-			window.location.reload();
+			//window.location.reload();
+            //init();
 		});
 		
 	});
@@ -222,10 +224,17 @@
 			success : function(){
 				console.log("delete complete~");
                 alert("삭제되었습니다");
+                window.location.reload();
 			},
             error : function(data){
 			    alert("삭제 실패ㅠㅠ"+JSON.stringify(data));
-			}
+			},
+            complete : function(data){
+			    alert(JSON.stringify(data)+" 삭제 결과");
+
+
+
+            }
 		});
 	}
 

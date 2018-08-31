@@ -33,7 +33,6 @@
             <param-value>
                <!-- config.JavaConfig-->
                 config.MvcConfig
-             <!--   config.ControllerConfig-->
                 config.SpringConfig
                 <!--java 아래의 config 아래의 javaConfig.class 설정 이용-->
             </param-value>
