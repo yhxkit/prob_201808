@@ -1,5 +1,6 @@
 package com.test.prob.repository;
 
+import com.test.prob.model.entity.Tag;
 import com.test.prob.model.entity.ToDo;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,10 +38,8 @@ public class ListRepository { // jpa data 써서 인터페이스로 교체해도
 
     public List<ToDo> findByTagsTag(String tag){
 
-
-
-        TypedQuery<ToDo> query = em.createQuery("select todo from ToDo todo where todo.tagList.tag=:searchTag", ToDo.class); //쿼리이이ㅣㅣㅠㅠㅠ org.hibernate.QueryException: illegal attempt to dereference collection [todo0_.toDoIdx.tagList] with element property reference [tag]
-    //select todo from ToDo todo inner join jpataglist tg on todo.todoidx = tg.todoidx where tg.tag = :searchtag
+        TypedQuery<ToDo> query = em.createQuery("select todo from ToDo todo left join Tag jtl on todo.toDoIdx = jtl.toDoIdx where jtl.tag=:searchTag", ToDo.class);
+        //쿼리 생성할때는 조인 명시해줘야함...
 
         query.setParameter("searchTag", tag);
         List<ToDo> resultToDo = query.getResultList();
@@ -50,6 +49,7 @@ public class ListRepository { // jpa data 써서 인터페이스로 교체해도
     }
 
     public void delete(ToDo toDoBean){
+        log.info(toDoBean+"삭제가 왜 상세랑 그냥이 다른것일까...");
         em.remove( em.find(ToDo.class, toDoBean.getToDoIdx()) );
     }
 
@@ -67,8 +67,12 @@ public class ListRepository { // jpa data 써서 인터페이스로 교체해도
     }
 
     public void edit(ToDo toDoBean){
-        ToDo updateBean = em.find(ToDo.class, toDoBean.getToDoIdx());
-        updateBean.update(toDoBean);
+        log.info("수정 체크 "+toDoBean);
+        em.merge(toDoBean); // ....??? 이게 왜 되는건지...???
+        //ToDo updateBean = em.find(ToDo.class, toDoBean.getToDoIdx());
+        //updateBean.update(toDoBean);
+        //em.remove(updateBean);
+        //em.persist(toDoBean);
 
     }
 }

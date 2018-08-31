@@ -42,11 +42,14 @@ public class ToDo {
 
 
 
-    @ElementCollection(fetch = FetchType.EAGER)
+    /*@ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(
              name="jpataglist",
              joinColumns = @JoinColumn(name="toDoIdx"))
-     @OrderColumn(name="tagIdx")
+     @OrderColumn(name="tagIdx")*/
+    @OneToMany(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.PERSIST}, fetch= FetchType.EAGER, orphanRemoval = true)
+
+    @JoinColumn(name="toDoIdx")
     private List<Tag> tagList;
 
     private String tags;
@@ -62,11 +65,18 @@ public class ToDo {
             this.tags = tags;
 
             List<String> checkEmptyTags = Arrays.asList(tags.trim().split(" "));
-            this.tagList = new ArrayList<>();
+
+            this.tagList = new ArrayList<>(); //ㅋ...ㅋㅋㅋㅋ 아니... onetomany로 짜면 이런 대참사가 일어나는구나.... 앞으로는 manytoone으로 짜서 이런 일이 발생하지 않도록 하자...
+            int i=0;
             for (String t : checkEmptyTags) {
                 if (!t.equals("")) {
                     Tag tag = new Tag();
+
                     tag.setTag(t);
+                    tag.setTagIdx(i++); //이거 이제 필요없지 않아...??
+                    //머지.. 삭제는 왜 안돼? 수정만안되면 모르겠는데..?
+
+
                     this.tagList.add(tag);
                     System.out.println(tag);
                 }
@@ -80,18 +90,13 @@ public class ToDo {
         this.title = toDoBean.getTitle();
         this.dateFrom= toDoBean.getDateFrom();
         this.dateTo = toDoBean.getDateTo();
-//        this.tags = toDoBean.getTags();
         this.setTags(toDoBean.getTags());
-       // this.tagList = toDoBean.getTagList();
+
         this.status = toDoBean.status;
         System.out.println("업뎃되나 체크 "+toDoBean);
 
 
     }
-
- /*   public void setToDoIdx(int toDoIdx){
-        this.toDoIdx=toDoIdx;
-    }*/
 
 
     public void setDateFrom(LocalDate dateFrom) {

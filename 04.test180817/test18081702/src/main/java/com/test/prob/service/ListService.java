@@ -25,7 +25,8 @@ public class ListService {
         return result;
     }
 
-    public ToDo selectOne(int toDoIdx){
+    public ToDo selectOne(int toDoIdx)
+    {
         return listRepository.findOne(toDoIdx);
     }
 
@@ -34,9 +35,7 @@ public class ListService {
     }
 
     public void deleteOne(int toDoIdx){
-
         ToDo toDoBean = listRepository.findOne(toDoIdx);
-
         listRepository.delete(toDoBean);
     }
 
