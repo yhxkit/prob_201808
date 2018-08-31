@@ -31,15 +31,13 @@ public class ToDo {
      private boolean status;
 
 
-//     @ElementCollection(fetch = FetchType.EAGER) //즉시 로딩 설정 없으면 ToDo 엔티티가져올때마다 트랜잭션 범위내에서 강제로 리스트필드를 한번 get 해줘야 에러가 나지 않습니다...
+//     @ElementCollection(fetch = FetchType.EAGER) //즉시 로딩 설정 없으면 ToDo 엔티티가져올때마다 트랜잭션 범위내에서 강제로 Tag를 한번 get 해줘야 에러가 나지 않습니다...
 //     @CollectionTable(
 //             name="jpataglist",
 //             joinColumns = @JoinColumn(name="toDoIdx"))
 //     @OrderColumn(name="tagIdx")
 //     @Column(name="tag")
 //     private List<String> tagList;
-
-
 
 
     /*@ElementCollection(fetch = FetchType.EAGER)
@@ -59,23 +57,21 @@ public class ToDo {
 
 
 
-    public void setTags(String tags){//JPA는 꺼내올때는 객체를 안쓰네 ^^... 스프링에서 리퀘스트 들어올때 매핑하고 JPA에서는 이거 안쓰나봐...
+    public void setTags(String tags){//JPA는 꺼내올때는 객체를 안쓰네...스프링에서 리퀘스트 들어올때만 매핑하고 JPA에서는 이거 안쓰나봐...
         if(tags != null) {
             tags = tags.trim();
             this.tags = tags;
 
             List<String> checkEmptyTags = Arrays.asList(tags.trim().split(" "));
 
-            this.tagList = new ArrayList<>(); //ㅋ...ㅋㅋㅋㅋ 아니... onetomany로 짜면 이런 대참사가 일어나는구나.... 앞으로는 manytoone으로 짜서 이런 일이 발생하지 않도록 하자...
+            this.tagList = new ArrayList<>(); //ㅋ...ㅋㅋㅋㅋ 아니... onetomany로 짜면 이런 참사가 일어나는구나.... 앞으로는 manytoone으로 짜서 이런 일이 발생하지 않도록 하자...
             int i=0;
             for (String t : checkEmptyTags) {
                 if (!t.equals("")) {
                     Tag tag = new Tag();
 
                     tag.setTag(t);
-                    tag.setTagIdx(i++); //이거 이제 필요없지 않아...??
-                    //머지.. 삭제는 왜 안돼? 수정만안되면 모르겠는데..?
-
+                    tag.setTagIdx(i++); //이거 이제 필요없지 않아...?
 
                     this.tagList.add(tag);
                     System.out.println(tag);
@@ -86,6 +82,7 @@ public class ToDo {
     }
 
 
+/* merger 메서드로 수정하면서 필요없어짐..
     public void update(ToDo toDoBean){
         this.title = toDoBean.getTitle();
         this.dateFrom= toDoBean.getDateFrom();
@@ -96,7 +93,7 @@ public class ToDo {
         System.out.println("업뎃되나 체크 "+toDoBean);
 
 
-    }
+    }*/
 
 
     public void setDateFrom(LocalDate dateFrom) {

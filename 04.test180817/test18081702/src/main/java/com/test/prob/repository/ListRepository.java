@@ -1,19 +1,12 @@
 package com.test.prob.repository;
 
-import com.test.prob.model.entity.Tag;
 import com.test.prob.model.entity.ToDo;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -43,13 +36,13 @@ public class ListRepository { // jpa data 써서 인터페이스로 교체해도
 
         query.setParameter("searchTag", tag);
         List<ToDo> resultToDo = query.getResultList();
-        System.out.println("태그 검색~"+resultToDo);
+        log.info("태그 검색~"+resultToDo);
         return resultToDo;
 
     }
 
     public void delete(ToDo toDoBean){
-        log.info(toDoBean+"삭제가 왜 상세랑 그냥이 다른것일까...");
+        log.info(toDoBean+"삭제");
         em.remove( em.find(ToDo.class, toDoBean.getToDoIdx()) );
     }
 
@@ -68,7 +61,7 @@ public class ListRepository { // jpa data 써서 인터페이스로 교체해도
 
     public void edit(ToDo toDoBean){
         log.info("수정 체크 "+toDoBean);
-        em.merge(toDoBean); // ....??? 이게 왜 되는건지...???
+        em.merge(toDoBean); // ....??? 이게 왜 되는건지...??? 영속 객체가 분리됐었나...??? 왜지???
         //ToDo updateBean = em.find(ToDo.class, toDoBean.getToDoIdx());
         //updateBean.update(toDoBean);
         //em.remove(updateBean);
