@@ -5,8 +5,6 @@ import com.test.prob.model.entity.ToDo;
 import com.test.prob.repository.ListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 @Service
@@ -19,7 +17,6 @@ public class ListService {
         this.listRepository = listRepository;
     }
 
-    //    @Transactional 트랜잭셔널을 왜 서비스에서 달지...? 여기서 달아도 적용이 되나..?
     public List<ToDo> getAllToDo() {
         List<ToDo> result = listRepository.findAll();
         return result;

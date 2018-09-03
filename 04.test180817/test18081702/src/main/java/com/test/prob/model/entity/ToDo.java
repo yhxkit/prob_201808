@@ -57,14 +57,13 @@ public class ToDo {
 
 
 
-    public void setTags(String tags){//JPA는 꺼내올때는 객체를 안쓰네...스프링에서 리퀘스트 들어올때만 매핑하고 JPA에서는 이거 안쓰나봐...
+    public void setTags(String tags){//JPA는 꺼내올때는 객체를 안씀...스프링에서 리퀘스트 들어올때만 매핑하고 JPA랑 좀 매핑하는 시점이 다른것같음
         if(tags != null) {
             tags = tags.trim();
             this.tags = tags;
-
             List<String> checkEmptyTags = Arrays.asList(tags.trim().split(" "));
 
-            this.tagList = new ArrayList<>(); //ㅋ...ㅋㅋㅋㅋ 아니... onetomany로 짜면 이런 참사가 일어나는구나.... 앞으로는 manytoone으로 짜서 이런 일이 발생하지 않도록 하자...
+            this.tagList = new ArrayList<>(); //onetomany로 짜면 이렇게 코드가 복잡해지므로 앞으로는 manytoone으로 짜서 이런 일이 발생하지 않도록 하자...
           //  int i=0;
             for (String t : checkEmptyTags) {
                 if (!t.equals("")) {
@@ -72,8 +71,6 @@ public class ToDo {
 
                     tag.setTag(t);
                    // tag.setTagIdx(i++);
-                    // 이거 이제 필요없지 않아...?
-                    //아니 이거 DB에서 칼럼 지우고 이거 지우고 tag에서 taglist 지웠더니 taglist가 defaultvalue가 없다고 오류낰ㅋㅋㅋㅋ큐ㅠ??????????
 
                     this.tagList.add(tag);
                     System.out.println(tag);
@@ -84,18 +81,7 @@ public class ToDo {
     }
 
 
-/* merger 메서드로 수정하면서 필요없어짐..
-    public void update(ToDo toDoBean){
-        this.title = toDoBean.getTitle();
-        this.dateFrom= toDoBean.getDateFrom();
-        this.dateTo = toDoBean.getDateTo();
-        this.setTags(toDoBean.getTags());
 
-        this.status = toDoBean.status;
-        System.out.println("업뎃되나 체크 "+toDoBean);
-
-
-    }*/
 
 
     public void setDateFrom(LocalDate dateFrom) {

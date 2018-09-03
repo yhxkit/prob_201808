@@ -24,7 +24,7 @@ public class Tag {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idx;
 	int toDoIdx;
-	//int tagIdx;
+	//int tagIdx; //ToDo 엔티티에서 Tag 엔티티를 List로 넣었을때 사용했으나 연관 엔티티로 변경
 
 	String tag;
 

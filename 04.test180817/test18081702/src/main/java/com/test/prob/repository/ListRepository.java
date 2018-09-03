@@ -61,7 +61,7 @@ public class ListRepository { // jpa data 써서 인터페이스로 교체해도
 
     public void edit(ToDo toDoBean){
         log.info("수정 체크 "+toDoBean);
-        em.merge(toDoBean); // ....??? 이게 왜 되는건지...??? 영속 객체가 분리됐었나...??? 왜지???
+        em.merge(toDoBean); // ....??? 왜 머지로 수정을 하는것일까
         //ToDo updateBean = em.find(ToDo.class, toDoBean.getToDoIdx());
         //updateBean.update(toDoBean);
         //em.remove(updateBean);
