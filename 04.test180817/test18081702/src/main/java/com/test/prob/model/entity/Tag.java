@@ -24,7 +24,7 @@ public class Tag {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idx;
 	int toDoIdx;
-	int tagIdx;
+	//int tagIdx;
 
 	String tag;
 

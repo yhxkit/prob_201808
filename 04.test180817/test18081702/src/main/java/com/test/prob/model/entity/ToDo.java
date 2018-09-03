@@ -65,13 +65,15 @@ public class ToDo {
             List<String> checkEmptyTags = Arrays.asList(tags.trim().split(" "));
 
             this.tagList = new ArrayList<>(); //ㅋ...ㅋㅋㅋㅋ 아니... onetomany로 짜면 이런 참사가 일어나는구나.... 앞으로는 manytoone으로 짜서 이런 일이 발생하지 않도록 하자...
-            int i=0;
+          //  int i=0;
             for (String t : checkEmptyTags) {
                 if (!t.equals("")) {
                     Tag tag = new Tag();
 
                     tag.setTag(t);
-                    tag.setTagIdx(i++); //이거 이제 필요없지 않아...?
+                   // tag.setTagIdx(i++);
+                    // 이거 이제 필요없지 않아...?
+                    //아니 이거 DB에서 칼럼 지우고 이거 지우고 tag에서 taglist 지웠더니 taglist가 defaultvalue가 없다고 오류낰ㅋㅋㅋㅋ큐ㅠ??????????
 
                     this.tagList.add(tag);
                     System.out.println(tag);

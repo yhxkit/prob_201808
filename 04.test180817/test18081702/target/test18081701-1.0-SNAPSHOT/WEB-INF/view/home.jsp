@@ -122,8 +122,8 @@
 
 			deleteOne(idx);//삭제
 			$('#detailModal').modal('hide'); //상세페이지 숨김
-            //window.location.reload();
-          //  init();
+            //window.location.reload();//ajax success 이후에 화면 로드가 아니면 통신 중에 화면을 리로드 하는 경우 발생하므로 status 0 오류
+          //  init(); //안먹힘
 		});
 		
 		$(document).on('click','table .deleteThis',function(e) { //완료된 리스트 중에서 삭제하기
@@ -230,10 +230,7 @@
 			    alert("삭제 실패ㅠㅠ"+JSON.stringify(data));
 			},
             complete : function(data){
-			    alert(JSON.stringify(data)+" 삭제 결과");
-
-
-
+			 //   alert(JSON.stringify(data)+" 삭제 결과");
             }
 		});
 	}
