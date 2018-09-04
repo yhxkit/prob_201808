@@ -2,8 +2,11 @@ package config;
 
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -19,19 +22,50 @@ import java.beans.PropertyVetoException;
 @EnableJpaRepositories(basePackages = "com.test.prob") // 스프링 데이터 JPA 설정... 리포지토리를 이용해서 반복되는 기본 기능 구조에 대한 구현을 줄일 수 있음
 public class SpringConfig {
 
+    @Value("${db.driver}")
+    private String driver;
+
+    @Value("${db.jdbcURL}")
+    private String jdbcURL;
+
+    @Value("${db.user}")
+    private String user;
+
+    @Value("${db.password}")
+    private String password;
+
+
+
+    @Bean //프로퍼티 파일 설정
+    public static PropertySourcesPlaceholderConfigurer properties(){
+        PropertySourcesPlaceholderConfigurer configurer = new PropertySourcesPlaceholderConfigurer();
+        configurer.setLocation(new ClassPathResource("db.properties"));
+        return  configurer;
+    }
+
+
     @Bean(destroyMethod = "close")
     public ComboPooledDataSource dataSource() { //db 연결은 위한 dataSource 설정...
         // 왜 예제처럼 그냥 DataSource는 리턴타입으로 설정했을 때 디스트로이 메서드에 에러나지?
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         try {
-            dataSource.setDriverClass("com.mysql.jdbc.Driver");
+//            dataSource.setDriverClass("com.mysql.jdbc.Driver");
+            dataSource.setDriverClass(driver);
         } catch (PropertyVetoException e) {
             throw new RuntimeException(e);
         }
-        dataSource.setJdbcUrl(
-                "jdbc:mysql://localhost/testdb?characterEncoding=utf8");
-        dataSource.setUser("root");
-        dataSource.setPassword("mysqlroot");
+//        dataSource.setJdbcUrl(
+//                "jdbc:mysql://localhost/testdb?characterEncoding=utf8");
+        dataSource.setJdbcUrl(jdbcURL);
+
+//        dataSource.setUser("root");
+        dataSource.setUser(user);
+
+//        dataSource.setPassword("mysqlroot");
+        dataSource.setPassword(password);
+
+
+
         return dataSource;
     }
 
