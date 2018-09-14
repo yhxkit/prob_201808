@@ -28,21 +28,21 @@
 
 ### 엔티티
 #### Member
- String email 
- String password(암호화)
- String name
- String state
- Post post
+- String email 
+- String password(암호화)
+- String name
+- String state
+- Post post
 
 #### Post
- int postIdx
- String title
- String content
- LocalDateTime postTime
- Comment comment
+- int postIdx
+- String title
+- String content
+- LocalDateTime postTime
+- Comment comment
 
 #### Comment
- int commentIdx
- LocalDateTime commentTime
- String comment
+- int commentIdx
+- LocalDateTime commentTime
+- String comment
   
