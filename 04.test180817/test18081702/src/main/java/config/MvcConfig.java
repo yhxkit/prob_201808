@@ -33,7 +33,8 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         log.info(" 뷰 리졸버 ");
         InternalResourceViewResolver result = new InternalResourceViewResolver();
         result.setPrefix("/WEB-INF/view/");
-        result.setSuffix(".jsp");
+//        result.setSuffix(".jsp");
+        result.setSuffix(".html");
         return result;
     }
 

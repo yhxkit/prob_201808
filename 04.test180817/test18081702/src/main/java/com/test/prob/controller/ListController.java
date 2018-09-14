@@ -32,7 +32,8 @@ public class ListController {
     public String home() {
         log.info("welcome...");
 
-        return "home";
+//        return "home";
+        return "testHome";
     }
 
     @ResponseBody //뷰 없음
