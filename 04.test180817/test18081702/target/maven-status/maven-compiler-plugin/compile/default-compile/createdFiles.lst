@@ -1,0 +1,7 @@
+com\test\prob\model\entity\Tag.class
+com\test\prob\service\ListService.class
+com\test\prob\controller\ListController.class
+com\test\prob\model\entity\ToDo.class
+com\test\prob\repository\ListRepository.class
+config\SpringConfig.class
+config\MvcConfig.class

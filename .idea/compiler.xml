@@ -11,6 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="pilot180917" target="1.8" />
       <module name="test18081701" target="1.8" />
     </bytecodeTargetLevel>
   </component>

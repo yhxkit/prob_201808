@@ -46,7 +46,6 @@ public class ToDo {
              joinColumns = @JoinColumn(name="toDoIdx"))
      @OrderColumn(name="tagIdx")*/
     @OneToMany(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.PERSIST}, fetch= FetchType.EAGER, orphanRemoval = true)
-
     @JoinColumn(name="toDoIdx")
     private List<Tag> tagList;
 
