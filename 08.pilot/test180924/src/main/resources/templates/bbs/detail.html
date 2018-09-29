@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+
+    </style>
+    <script>
+
+        $(document).on('click', '#deletePost', function (event) {
+            event.preventDefault();
+            $.ajax({
+                type: 'DELETE',
+                url: 'http://localhost:8080/bbs/'+$('#postDetail #postIdxSpan').val(),
+                headers: {'token': sessionStorage.getItem('currentUserToken')},
+                success: function () {
+                    console.log("delete complete~");
+                    alert("삭제되었습니다");
+                    window.location.reload();
+                },
+                error: function (data) {
+                    alert("삭제 실패ㅠㅠ" + JSON.stringify(data));
+                },
+                complete: function (data) {
+                    //   alert(JSON.stringify(data)+" 삭제 결과");
+                }
+            });
+        });
+
+    </script>
+</head>
+<body>
+
+포스트상세..<br/><br/>
+<div id="postDetail">
+        <span id="postIdxSpan" hidden></span>
+        제목<br/>
+        <span class="detail"></span>
+        <input type="hidden" id="title" name="title"/>
+    <br/>
+
+    <label  class="detail">작성자</label><br/>
+    <span id="postWriterSpan" class="detail"></span>
+    <!--<input type="hidden" id="postWriter" name="postWriter"/>-->
+    <br/>
+
+    <label  class="detail">작성일</label><br/>
+    <span class="detail"></span>
+    <!--<input type="hidden" id="postTime" name="title"/>-->
+    <br/>
+
+        내용<br/>
+    <div class="detail" id="detailForPostContent"></div>
+  <div id="editTextArea" hidden>
+        <textarea  name="postContent" id="postEditContent"></textarea>
+   </div>
+
+    <br/>
+</div>
+    <div id="writerOnly">
+        <a style="cursor:pointer; background-color:#888888 ; color: #fefefe" id="deletePost">삭제</a>
+        <a style="cursor:pointer; background-color:#888888 ; color: #fefefe"  id="editPost">수정</a>
+    </div>
+
+</body>
+</html>

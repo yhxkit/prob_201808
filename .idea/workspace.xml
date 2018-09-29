@@ -6,9 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="deec51a1-e966-40b7-a338-0df71e14c4e1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="deec51a1-e966-40b7-a338-0df71e14c4e1" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/../test18081702/target/" />
     <ignored path="$PROJECT_DIR$/04.test180817/test18081702/target/" />
@@ -37,7 +35,7 @@
     <session id="65180958">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="60" />
+          <entry key="project.closed" value="61" />
           <entry key="project.open.time.1" value="4" />
           <entry key="project.open.time.108" value="1" />
           <entry key="project.open.time.13" value="1" />
@@ -76,7 +74,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="18" />
-          <entry key="html" value="54" />
+          <entry key="html" value="55" />
           <entry key="iml" value="2" />
           <entry key="java" value="175" />
           <entry key="jsp" value="17" />
@@ -91,7 +89,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="18" />
-          <entry key="HTML" value="54" />
+          <entry key="HTML" value="55" />
           <entry key="IDEA_MODULE" value="2" />
           <entry key="JAVA" value="175" />
           <entry key="JSP" value="17" />
@@ -110,7 +108,7 @@
           <entry key="jsp" value="2001" />
           <entry key="md" value="13157" />
           <entry key="properties" value="201" />
-          <entry key="txt" value="369" />
+          <entry key="txt" value="373" />
           <entry key="xml" value="943" />
           <entry key="yml" value="81" />
         </counts>
@@ -121,7 +119,7 @@
           <entry key="JAVA" value="19695" />
           <entry key="JSP" value="2001" />
           <entry key="Markdown" value="13145" />
-          <entry key="PLAIN_TEXT" value="381" />
+          <entry key="PLAIN_TEXT" value="385" />
           <entry key="Properties" value="201" />
           <entry key="SQL" value="1" />
           <entry key="XML" value="942" />
@@ -141,15 +139,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/04.test180817/test18081702/src/main/java/com/test/prob/repository/ListRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/08.pilot/pilot18091701/src/main/java/com/prob/pilot18091701/controller/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -221,11 +210,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/04.test180817/test18081702/src/main/webapp/WEB-INF/view/home.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="229" column="17" lean-forward="true" selection-start-line="229" selection-start-column="17" selection-end-line="229" selection-end-column="17" />
+            <state relative-caret-position="318">
+              <caret line="237" column="30" lean-forward="true" selection-start-line="237" selection-start-column="30" selection-end-line="237" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/home.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="285" column="25" lean-forward="true" selection-start-line="285" selection-start-column="25" selection-end-line="285" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -255,6 +253,7 @@
       <find>한정</find>
       <find>in</find>
       <find>show</find>
+      <find>str</find>
     </findStrings>
     <replaceStrings>
       <replace>org</replace>
@@ -392,6 +391,99 @@
               <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
               <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
               <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
+              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
+              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
+              <item name="test180924" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
+              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
+              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
+              <item name="test180924" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
+              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
+              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
+              <item name="test180924" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
+              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
+              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
+              <item name="test180924" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
+              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
+              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
+              <item name="test180924" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
+              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
+              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
+              <item name="test180924" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
+              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
+              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
+              <item name="test180924" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+              <item name="test180924" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
+              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
+              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
+              <item name="test180924" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
+              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
+              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
+              <item name="test180924" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
+              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
+              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
+              <item name="test180924" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="bbs" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -580,7 +672,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="58" y="64" width="1433" height="920" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48522168" visible="true" weight="0.22505462" />
       <window_info id="Structure" order="1" sideWeight="0.5147783" side_tool="true" weight="0.21006945" />
@@ -669,7 +760,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="180824 13:36" />
     <MESSAGE value="180824 17:29" />
     <MESSAGE value="180827 14:49" />
     <MESSAGE value="180827 18:11" />
@@ -694,7 +784,8 @@
     <MESSAGE value="180912 16:33" />
     <MESSAGE value="180914 16:40" />
     <MESSAGE value="180928 17:55" />
-    <option name="LAST_COMMIT_MESSAGE" value="180928 17:55" />
+    <MESSAGE value="180928 19:27" />
+    <option name="LAST_COMMIT_MESSAGE" value="180928 19:27" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -778,13 +869,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Desktop/수습/5.자바스크립트/ninja-code/chapter-12/listing-12.4.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/수습/5.자바스크립트/ninja-code/chapter-12/listing-12.5.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -1146,8 +1230,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/04.test180817/test18081702/src/main/webapp/WEB-INF/view/home.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="229" column="17" lean-forward="true" selection-start-line="229" selection-start-column="17" selection-end-line="229" selection-end-column="17" />
+        <state relative-caret-position="318">
+          <caret line="237" column="30" lean-forward="true" selection-start-line="237" selection-start-column="30" selection-end-line="237" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="285" column="25" lean-forward="true" selection-start-line="285" selection-start-column="25" selection-end-line="285" selection-end-column="25" />
         </state>
       </provider>
     </entry>
