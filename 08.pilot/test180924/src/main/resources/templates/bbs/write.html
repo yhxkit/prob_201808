@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PostWrite</title>
+
+    <script type="text/javascript">
+        $(document).on('click', '#postWriteForm #postWriteButton', function (event) {
+            event.preventDefault();
+
+            var title = $('#postWriteForm #postTitle').val();
+            var textareaValue = CKEDITOR.instances.postContent.getData();
+            //textarea의 id 값을 이용해서 ckeditor의 메서드를 사용해야 함 ㅠ
+
+            var writeData=JSON.stringify({
+                'title': title,
+                'postContent': textareaValue,
+                'postWriter': sessionStorage.getItem('currentUserEmail')
+
+            }); //모냐...?
+
+            console.log("보내는 데이터 "+writeData);
+            console.log("리퀘스트헤더에 셋할 토큰.. "+sessionStorage.getItem('currentUserToken'));
+
+            writePost(writeData);
+        });
+
+        function writePost(writeData){ //왜 커맨드 객체에 매핑이 안되는거야 ㅠㅠ..?? postman으로는 잘 되는데 여기서 보내는 데이터값이 문젠가?
+
+            $.ajax({
+                url: 'http://localhost:8080/bbs/write',
+                type: 'post',
+                headers: {'token': sessionStorage.getItem('currentUserToken')},
+                data: writeData,
+                contentType: 'application/json; charset=utf-8',
+                success: function(){
+                    document.getElementById('postWrite').style.display = "none";
+                    document.getElementById('bbs').style.display='block';
+                    window.location.reload();
+
+                },
+                error: function(data){
+                    alert(" 등록 실패 : "+data['responseJSON']['message']);
+                    window.location.reload();
+                }
+            });
+
+
+        }
+    </script>
+</head>
+<body>
+
+<form id="postWriteForm">
+    <label>제목</label>
+    <input type="text" id="postTitle" name="title" size="80%"/>
+    <textarea name="postContent" id="postContent"></textarea>
+    <button type="submit" id="postWriteButton">등록</button>
+</form>
+
+</body>
+</html>

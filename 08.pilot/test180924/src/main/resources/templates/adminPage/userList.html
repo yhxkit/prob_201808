@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>userList</title>
+    <script type="text/javascript">
+
+
+        function searchUser(currentUserSearchPage){
+            console.log("검색어 "+$('#userSearchKeyword').val());
+            var keyword =  JSON.stringify({"email" : $('#userSearchKeyword').val()});
+            console.log("보내는 데이터 "+keyword);
+
+            $.ajax({
+                type: 'Post',
+                url: 'http://localhost:8080/admin/search?page='+currentUserSearchPage+'&elementsNumberForOnePage='+postNumPerPage,
+                headers: {'token': sessionStorage.getItem('currentUserToken')},
+                contentType: 'application/json; charset=utf-8',
+                data: keyword,
+                success: function (data) {
+                    console.log("유저 리스트를 가져옴...");
+                    var userListObj = "";
+                    $(data['users']).each(function (num, ele) {//첫번째 인자가 인덱스, 두번째 인자가 엘리먼트
+
+                        userListObj +='<tr><td >'
+                            +ele.email+'</td><td>'
+                            +ele.name+'</td><td>'
+                            +ele.status+'</td><td>'
+                            +ele.auth+'</td><td>'
+                            +ele.accountCreatedTime +'</td>' +
+                            '<td style="cursor:pointer" onclick="javascript:changeUserStatus(\''+ele.email+'\')" class="glyphicon glyphicon-refresh"> 상태변경</td></tr>';
+                    });
+
+                    $('#userListTable tbody').eq(1).html(userListObj);
+
+                    console.log("현재 페이지"+currentUserSearchPage);
+
+                    // 페이지네이션
+                    console.log('토탈 유저'+ data['users'].length);
+                    var totalUser = data['users'].length;
+
+                    var totalPage = parseInt(totalUser/postNumPerPage);
+                    if (totalUser%postNumPerPage!=0){totalPage = totalPage+1;}
+
+                    var startPage =1;
+                    if(currentUserSearchPage>pageNumPerPage){
+                        startPage=currentUserSearchPage-(currentUserSearchPage%pageNumPerPage)+1;
+                        if(currentUserSearchPage%pageNumPerPage==0){startPage=currentUserSearchPage-pageNumPerPage+1;}
+                    }
+
+                    var endPage = startPage+pageNumPerPage-1;
+                    if(endPage>=totalPage){endPage=totalPage;}
+
+                    console.log('토탈 페이지 '+totalPage);
+
+                    var pagingObj="";
+
+                    if(startPage!=1){
+                        pagingObj+='<li><a style="cursor:pointer;" onclick="javascript:searchUser('+(startPage-1)+')" aria-label="Previous">  <span aria-hidden="true">&laquo;</span> </a></li>';
+                    }
+
+                    for(var i=startPage; i<=endPage; i++){
+                        if(i==currentUserSearchPage){
+                            pagingObj+='<li><a>'+i+'</a></li>';
+                        }else{
+                            pagingObj+='<li><a style="cursor:pointer;" onclick="javascript:searchUser('+i+')">'+i+'</a></li>';
+                        }
+                    }
+                    if(endPage != totalPage){
+                        pagingObj+='<li><a style="cursor:pointer;" onclick="javascript:searchUser('+(endPage+1)+')" aria-label="Next"><span aria-hidden="true">&raquo;</span> </a></li>';
+                    }
+
+                    $('#userListPaging ul').eq(0).html(pagingObj);
+                },
+                error: function (data) {
+                    alert("유저 리스트 로딩 실패ㅠㅠ" + JSON.stringify(data));
+                    window.location.reload();
+                },
+                complete: function (data) {
+                    $('#userSearchKeyword').val('');
+                }
+            });
+
+            }
+
+
+
+        function toUserList(currentAdminPage){
+            // document.getElementById('adminPage').style.display="block";
+            // document.getElementById('userSearchInput').style.display="block";
+            // document.getElementById('bbsRelated').style.display="none";
+           $.ajax({
+                type: 'Get',
+                url: 'http://localhost:8080/admin?page='+currentAdminPage+'&elementsNumberForOnePage='+postNumPerPage,
+                headers: {'token': sessionStorage.getItem('currentUserToken')},
+                success: function (data) {
+                    console.log("관리자 유저 리스트를 가져오는데 성공..22."+JSON.stringify(data));
+
+                    document.getElementById('adminPage').style.display="block";
+                    document.getElementById('userSearchInput').style.display="block";
+                    document.getElementById('bbsRelated').style.display="none";
+
+                    var userListObj = "";
+                    $(data['users']).each(function (num, ele) {//첫번째 인자가 인덱스, 두번째 인자가 엘리먼트
+
+                                userListObj +='<tr><td >'
+                                    +ele.email+'</td><td>'
+                                    +ele.name+'</td><td>'
+                                    +ele.status+'</td><td>'
+                                    +ele.auth+'</td><td>'
+                                    +ele.accountCreatedTime +'</td>' +
+                                    '<td style="cursor:pointer;" onclick="javascript:changeUserStatus(\''+ele.email+'\')" class="glyphicon glyphicon-refresh"> 상태변경</td></tr>';
+                            });
+                            $('#userListTable tbody').eq(1).html(userListObj);
+
+                            console.log("현재 페이지"+currentAdminPage);
+
+                            // 페이지네이션
+                            console.log('토탈 유저'+ data['totalUser']);
+                            var totalUser = data['totalUser'];
+                            var totalPage = parseInt(totalUser/postNumPerPage);
+                            if (totalUser%postNumPerPage!=0){totalPage = totalPage+1;}
+
+                            var startPage =1;
+                            if(currentAdminPage>pageNumPerPage){
+                                startPage= currentAdminPage-(currentAdminPage%pageNumPerPage)+1;
+                                if(currentAdminPage%pageNumPerPage==0){startPage=currentAdminPage-pageNumPerPage+1;}
+                            }
+
+                            var endPage = startPage+pageNumPerPage-1;
+                            if(endPage>=totalPage){endPage=totalPage;}
+
+                            console.log('토탈 페이지 '+totalPage);
+
+                            var pagingObj="";
+
+                            if(startPage!=1){
+                                pagingObj+='<li><a style="cursor:pointer;" onclick="javascript:toUserList('+(startPage-1)+')" aria-label="Previous">  <span aria-hidden="true">&laquo;</span> </a></li>';
+                            }
+
+                            for(var i=startPage; i<=endPage; i++){
+                                if(i==currentAdminPage){
+                                    pagingObj+='<li><a>'+i+'</a></li>';
+                                }else{
+                                    pagingObj+='<li><a style="cursor:pointer;" onclick="javascript:toUserList('+i+')">'+i+'</a></li>';
+                                }
+                            }
+                            if(endPage != totalPage){
+                                pagingObj+='<li><a style="cursor:pointer;" onclick="javascript:toUserList('+(endPage+1)+')" aria-label="Next"><span aria-hidden="true">&raquo;</span> </a></li>';
+                            }
+
+                            $('#userListPaging ul').eq(0).html(pagingObj);
+                },
+                error: function (data) {
+                    alert(" 유저 리스트 로딩 실패 : "+data['responseJSON']['message']);
+                    window.location.reload();
+                },
+                complete: function (data) {
+                }
+            });
+
+        } //totalUserList ends
+
+
+        function changeUserStatus(userEmail) {
+
+            var send =  JSON.stringify({"email" : userEmail});
+            console.log("보내는 데이터 "+send);
+            $.ajax({
+                type: 'Put',
+                url: 'http://localhost:8080/admin/'+userEmail,
+                data: send,
+                headers: {'token': sessionStorage.getItem('currentUserToken')},
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    console.log("유저상태 변경 성공");
+                    toUserList(1);
+                },
+                error: function(data){
+                    console.log("유저상태 변경 실패"+JSON.stringify(data));
+                }
+
+            });
+        }
+
+
+
+
+    </script>
+</head>
+<body>
+    userList for admin
+    <div id="userList">
+        <table id="userListTable" class="table">
+            <tr>
+                <th>유저</th><th>이름</th><th>상태</th><th>권한</th><th>생성일</th>
+            </tr>
+            <tbody></tbody>
+        </table>
+
+
+        <div id="userListPaging" class="text-center">
+            <ul  class="pagination"></ul>
+        </div>
+
+    </div>
+</body>
+</html>
