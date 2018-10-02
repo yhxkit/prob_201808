@@ -8,6 +8,68 @@
   <component name="ChangeListManager">
     <list default="true" id="deec51a1-e966-40b7-a338-0df71e14c4e1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/logs/application.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/logs/application.log.2018-09-24.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/logs/application.log.2018-09-25.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/logs/application.log.2018-09-26.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/logs/application.log.2018-09-27.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/logs/application.log.2018-09-28.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/logs/application.log.2018-09-28.1.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/logs/application.log.2018-09-29.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/logs/application.log.2018-09-30.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/Test180924Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/config/WebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/controller/AdminController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/controller/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/controller/MainController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/controller/PostingController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/controller/interceptor/AdminCheckInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/controller/interceptor/LoginCheckInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/controller/responseUtil/EntityForResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/entity/Account.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/entity/AccountDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/entity/Comment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/entity/CommentDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/entity/Post.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/entity/PostDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/entity/enumForEntity/Auth.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/entity/enumForEntity/Status.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/repository/AccountRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/repository/CommentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/repository/PostRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/AccountServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/CommentServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/PostServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/interfaces/AccountService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/interfaces/CommentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/interfaces/PostService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/jwt/TestJWT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/validator/AccountValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/validator/AccountValidatorImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/validator/WriterCheckValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/util/Paging.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/util/PagingImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/util/PasswordEncryptUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/util/SHA512.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/resources/message/messages.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/adminPage/userList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/bbs/commentList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/bbs/commentWrite.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/bbs/detail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/bbs/write.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/header/join.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/header/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/header/logout.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/jsptest/testjsp01.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/test/java/com/home/test180924/Test180924ApplicationTests.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/../test18081702/target/" />
@@ -37,7 +99,7 @@
     <session id="65180958">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="63" />
+          <entry key="project.closed" value="64" />
           <entry key="project.open.time.1" value="4" />
           <entry key="project.open.time.108" value="1" />
           <entry key="project.open.time.13" value="1" />
@@ -50,10 +112,10 @@
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.27" value="1" />
-          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.3" value="2" />
           <entry key="project.open.time.30" value="1" />
           <entry key="project.open.time.32" value="1" />
-          <entry key="project.open.time.35" value="3" />
+          <entry key="project.open.time.35" value="4" />
           <entry key="project.open.time.36" value="1" />
           <entry key="project.open.time.4" value="5" />
           <entry key="project.open.time.40" value="4" />
@@ -71,7 +133,7 @@
           <entry key="project.open.time.79" value="1" />
           <entry key="project.open.time.80" value="1" />
           <entry key="project.open.time.9" value="3" />
-          <entry key="project.opened" value="64" />
+          <entry key="project.opened" value="66" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -111,7 +173,7 @@
           <entry key="jsp" value="2001" />
           <entry key="md" value="13157" />
           <entry key="properties" value="201" />
-          <entry key="txt" value="373" />
+          <entry key="txt" value="379" />
           <entry key="xml" value="943" />
           <entry key="yml" value="81" />
         </counts>
@@ -122,7 +184,7 @@
           <entry key="JAVA" value="19695" />
           <entry key="JSP" value="2001" />
           <entry key="Markdown" value="13145" />
-          <entry key="PLAIN_TEXT" value="385" />
+          <entry key="PLAIN_TEXT" value="391" />
           <entry key="Properties" value="201" />
           <entry key="SQL" value="1" />
           <entry key="XML" value="942" />
@@ -142,11 +204,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/08.pilot/pilot18091701/src/main/java/com/prob/pilot18091701/controller/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="207">
+              <caret line="34" column="43" lean-forward="true" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -218,15 +280,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="4503">
               <caret line="237" column="30" selection-start-line="237" selection-start-column="30" selection-end-line="237" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/home.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="288" column="32" selection-start-line="288" selection-start-column="32" selection-end-line="288" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -360,7 +413,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="238" />
     <option name="width" value="1591" />
     <option name="height" value="1047" />
@@ -371,6 +424,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="prob_201808" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="test180809" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -383,111 +448,6 @@
               <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
               <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
-              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
-              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
-              <item name="test180924" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
-              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
-              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
-              <item name="test180924" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
-              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
-              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
-              <item name="test180924" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
-              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
-              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
-              <item name="test180924" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
-              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
-              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
-              <item name="test180924" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
-              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
-              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
-              <item name="test180924" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="home" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
-              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
-              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
-              <item name="test180924" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="home" type="462c0819:PsiDirectoryNode" />
-              <item name="test180924" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
-              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
-              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
-              <item name="test180924" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
-              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
-              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
-              <item name="test180924" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
-              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
-              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
-              <item name="test180924" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="bbs" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="prob_201808" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="test180809" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -499,7 +459,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/yhxkitest-INT/IdeaProjects/prob_201808/04.test180817/test18081702/src/main/java/com/test/prob/model/ListDaoImpl.java" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../test180924" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Facets" />
@@ -673,10 +633,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="238" y="0" width="1591" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48522168" visible="true" weight="0.23027718" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48522168" visible="true" weight="0.2887002" />
       <window_info id="Structure" order="1" sideWeight="0.5147783" side_tool="true" weight="0.21006945" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -690,7 +650,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32899022" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.40065145" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5011601" side_tool="true" weight="0.42424244" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.3213898" />
+      <window_info active="true" anchor="bottom" id="Messages" order="9" visible="true" weight="0.3213898" />
       <window_info anchor="bottom" id="Tail" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Spring" order="12" weight="0.32899022" />
@@ -763,8 +723,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="180824 17:29" />
-    <MESSAGE value="180827 14:49" />
     <MESSAGE value="180827 18:11" />
     <MESSAGE value="180828 17:10 (* delete시 삭제되는데 ajax의 error 펑션 실행)" />
     <MESSAGE value="180828 17:30 ..??" />
@@ -788,7 +746,9 @@
     <MESSAGE value="180914 16:40" />
     <MESSAGE value="180928 17:55" />
     <MESSAGE value="180928 19:27" />
-    <option name="LAST_COMMIT_MESSAGE" value="180928 19:27" />
+    <MESSAGE value="181001 19:27" />
+    <MESSAGE value="181001 19:30" />
+    <option name="LAST_COMMIT_MESSAGE" value="181001 19:30" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1176,10 +1136,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="288" column="32" selection-start-line="288" selection-start-column="32" selection-end-line="288" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/08.pilot/pilot18091701/src/main/java/com/prob/pilot18091701/controller/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="207">
+          <caret line="34" column="43" lean-forward="true" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -1235,13 +1202,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4503">
           <caret line="237" column="30" selection-start-line="237" selection-start-column="30" selection-end-line="237" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="288" column="32" selection-start-line="288" selection-start-column="32" selection-end-line="288" selection-end-column="32" />
         </state>
       </provider>
     </entry>
