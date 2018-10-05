@@ -15,6 +15,9 @@ public interface PostRepository extends PagingAndSortingRepository<Post, Integer
     Page<Post> findAll(Pageable pageable);
 // Iterable<Account> findByEmailIgnoreCaseContainingOrderByAccountCreatedTimeDesc(String email);// , PageRequest pageRequest 오류남
     Iterable<Post> findByTitleIgnoreCaseContainingOrderByPostIdxDesc(String keyword);
-
+    
+    //이거 페이지로 하려면 pageable 이나 pageRequest를 주거나 쿼리를 써야하지 않나
+    Iterable<Post> findByPostWriterEmailIgnoreCaseContainingOrderByPostIdxDesc(String keyword);
+    
 }
 

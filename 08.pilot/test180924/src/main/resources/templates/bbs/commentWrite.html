@@ -86,7 +86,8 @@
 		            data: commentEditData,
 		            contentType: 'application/json; charset=utf-8',
 		            success: function(data){
-		                console.log("수정 성공.."+data);
+		                console.log("코멘트 수정.."+data);
+		                if(data['result']=='fail'){ alert(data['message']); }
 		                showDetail(currentPostIdx);
 		                CKEDITOR.instances['commentContent'].setData('');
 		        		$('#commentEditButton').hide();
@@ -94,8 +95,7 @@
 		        		$('#commentWriteButton').show();
 		            },
 		            error: function(data){
-		                alert(" 수정 실패 : "+data['responseJSON']['message']);
-		                window.location.reload();
+		            	errorHandling(data);
 		            }
 			});
 		  

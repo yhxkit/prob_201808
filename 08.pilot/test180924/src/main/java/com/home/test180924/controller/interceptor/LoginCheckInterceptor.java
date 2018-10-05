@@ -41,7 +41,7 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter { //Handler
 
         Optional checkExistingUser = Optional.ofNullable(accountRepository.findByEmail(userEmail));
         if(!checkExistingUser.isPresent()){
-            log.debug("토큰이 만료");
+            log.debug("토큰이 만료 "+token);
             response.sendError(401, "세션이 만료되었습니다. 재로그인해주세요");
             return false;
         }

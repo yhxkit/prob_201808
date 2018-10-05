@@ -2,6 +2,7 @@ package com.home.test180924.service;
 
 
 import com.home.test180924.entity.AccountDto;
+import com.home.test180924.entity.enumForEntity.Auth;
 import com.home.test180924.entity.enumForEntity.Status;
 import com.home.test180924.service.jwt.JWT;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +19,6 @@ import com.home.test180924.service.validator.AccountValidator;
 import com.home.test180924.util.Paging;
 import com.home.test180924.util.PasswordEncryptUtil;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
 @Slf4j
@@ -56,7 +56,7 @@ public class AccountServiceImpl implements AccountService {
 
 
     @Override
-	public HashMap login(Account account){
+	public HashMap<String, ?> login(Account account){
 
         HashMap resultMap = new HashMap();
 		Account checkAccount = accountRepository.findByEmail(account.getEmail());
@@ -64,14 +64,14 @@ public class AccountServiceImpl implements AccountService {
             if(checkAccount == null){
                 resultMap.put("result", "fail");
                 resultMap.put("message", "없는 계정입니다.");
-                log.debug("계정없음");
+                log.debug("로그인 시도 : 계정 없음");
                 return  resultMap;
             }
 
             if(!checkAccount.getPassword().equals(passwordEncryptUtil.encrypt(account.getPassword()))){
                 resultMap.put("result", "fail");
                 resultMap.put("message", "비밀번호가 틀렸습니다.");
-                log.debug("비번틀림");
+                log.debug("로그인 시도 : 비번틀림");
                 return  resultMap;
             }
 
@@ -94,19 +94,31 @@ public class AccountServiceImpl implements AccountService {
 		return accountRepository.findByEmail(account.getEmail());
 	}
 
-	@Override
-    public Account changeStatus(AccountDto accountDto, Errors errors){
+    @Override
+    public Account changeAuth(Account account) {
 
-        Account checkAccount = accountRepository.findByEmail(accountDto.getEmail());
-
-        if(Status.ENABLE==checkAccount.getStatus()){
-            checkAccount.setStatus(Status.DISABLE);
-        }else if(Status.DISABLE==checkAccount.getStatus()){
-            checkAccount.setStatus(Status.ENABLE);
+        if(Auth.USER==account.getAuth()){
+            account.setAuth(Auth.ADMIN);
+        }else if(Auth.ADMIN==account.getAuth()){
+            account.setAuth(Auth.USER);
         }
+        log.info(account.getEmail()+"의 권한 변경 "+account.getAuth());
+        accountRepository.save(account);
+        return accountRepository.findByEmail(account.getEmail());
+    }
 
-        accountRepository.save(checkAccount);
-        return accountRepository.findByEmail(checkAccount.getEmail());
+    @Override
+    public Account changeStatus(Account account){
+
+        if(Status.ENABLE==account.getStatus()){
+            account.setStatus(Status.DISABLE);
+        }else if(Status.DISABLE==account.getStatus()){
+            account.setStatus(Status.ENABLE);
+        }
+        log.info(account.getEmail()+"의 상태 변경 "+account.getStatus());
+
+        accountRepository.save(account);
+        return accountRepository.findByEmail(account.getEmail());
     }
 
     @Override
@@ -136,39 +148,15 @@ public class AccountServiceImpl implements AccountService {
     public Account findByPostsPostIdx(int postIdx) {
         return accountRepository.findByPostsPostIdx(postIdx);
     }
-
+    
     @Override
-    public long getTotalUser() {
-        long totalUser = accountRepository.count();
-        log.debug(totalUser+"명의 유저 존재");
-        return totalUser;
+    public Account findByCommentsCommentIdx(int commentIdx) {
+    	return accountRepository.findByCommentsCommentIdx(commentIdx);
     }
 
-
-/*
     @Override
-    public boolean duplicatedCheck(String email, HttpServletResponse response, Errors errors) {
-        Optional<Account> checkAccount = accountRepository.findById(email);
-
-        if(checkAccount.isPresent()){
-            try {
-                response.sendError(406, "중복된 이메일입니다.");
-            }catch (Exception e){
-                log.debug(e.toString());
-              }
-            errors.rejectValue("email", "duplicatedEmail");
-            return true;
-        }
-        return false;
+    public Account editNameAndPassword(Account account) {
+        account.setPassword(passwordEncryptUtil.encrypt(account.getPassword()));
+        return accountRepository.save(account);
     }
-*/
-
-
-    /*
-        @Override
-        public boolean errorCheck(Errors errors, final String value) {
-            return errors.getAllErrors().stream().filter(error -> value.equals(error.getCode())).count() > 0;
-        }
-    */
-
 }

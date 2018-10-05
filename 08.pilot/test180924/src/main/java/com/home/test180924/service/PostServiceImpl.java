@@ -90,11 +90,6 @@ public class PostServiceImpl implements PostService {
     @Override
     public void delete(int postIdx){
 
-//        Account writer = accountRepository.findByPostsPostIdx(postIdx);
-//        String postWriterEmail = writer.getEmail();
-//        if(!writerCheckValidator.checkWriter(postWriterEmail, token)){
-//            return;
-//        }
         postRepository.delete(postRepository.findByPostIdx(postIdx));
 
     }
@@ -104,4 +99,11 @@ public class PostServiceImpl implements PostService {
     public Iterable<Post> findPostsWithPage(String keyword, int page, int elementsNumberForOnePage) {
         return postRepository.findByTitleIgnoreCaseContainingOrderByPostIdxDesc(keyword);
     }
+    
+    @Override
+    public Iterable<Post> findByWriter(String keyword) {
+    	return postRepository.findByPostWriterEmailIgnoreCaseContainingOrderByPostIdxDesc(keyword);
+    }
+    
+    
 }

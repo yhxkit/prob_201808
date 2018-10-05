@@ -13,13 +13,13 @@
                  type: 'DELETE',
                  url: 'http://localhost:8080/bbs/' + postIdx +'/' + commentIdx,
                  headers: {'token': localStorage.getItem('currentUserToken')},
-                 success: function () {
-                     console.log("delete complete~");
-                     alert("삭제되었습니다");
+                 success: function (data) {
+                    console.log("delete complete~");
+                    if(data['result']=='fail'){ alert(data['message']); }
                     showDetail(postIdx);
                  },
                  error: function (data) {
-                     errorHandling(data);
+                    errorHandling(data);
                  },
                  complete: function (data) {
                      //   alert(JSON.stringify(data)+" 삭제 결과");

@@ -59,7 +59,7 @@
 
             }).done(function (data, textStatus, request) {
             }).fail(function (data) {
-              //  $('#loginError').html("<p style='color: red'>"+data['responseJSON']['message']+"</p>");
+            	errorHandling(data);
             });
         }
 

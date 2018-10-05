@@ -45,12 +45,11 @@
             data: editingPostData,
             contentType: 'application/json; charset=utf-8',
             success: function(data){
-            //    alert("수정 성공.."+JSON.stringify(data));
                 if(data['result']=='fail'){ alert(data['message']); }
                showDetail(editingPostIdx);
             },
             error: function(data){
-        //        errorHandling(data);
+        	   errorHandling(data);
             }
         });
 
@@ -62,7 +61,7 @@
     
     function showDetail(idx){
 
-        document.getElementById('detailPage').style.display='block';
+        $('#detailPage').show();
         $.getJSON('http://localhost:8080/bbs/' + idx, function (data) {
             console.log(idx+'번의 데이터(코멘트 포함)'+JSON.stringify(data));
 			
@@ -129,7 +128,7 @@
                 type: 'DELETE',
                 url: 'http://localhost:8080/bbs/'+$('#postDetail #postIdxSpan').val(),
                 headers: {'token': localStorage.getItem('currentUserToken')},
-                success: function () {
+                success: function (data) {
                     console.log("delete complete~");
                     if(data['result']=='fail'){
                         alert("삭제 실패 : "+data['message']);
@@ -139,11 +138,9 @@
                     window.location.reload();
                 },
                 error: function (data) {
-                    // alert(" 삭제 실패 : "+data['responseJSON']['message']);
-                    // window.location.reload();
+                	errorHandling(data);
                 },
                 complete: function (data) {
-                    //   alert(JSON.stringify(data)+" 삭제 결과");
                 }
             });
         });

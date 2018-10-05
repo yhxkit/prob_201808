@@ -18,4 +18,6 @@ public interface PostService {
 
     Iterable<Post> findPostsWithPage(String keyword, int page, int elementsNumberForOnePage);
 
+    
+    Iterable<Post> findByWriter(String keyword);
 }

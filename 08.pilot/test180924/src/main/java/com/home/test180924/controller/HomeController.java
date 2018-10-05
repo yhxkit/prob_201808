@@ -28,7 +28,6 @@ public class HomeController {
 
 	@GetMapping("/")
     public String home(HttpServletRequest request, HttpServletResponse response, Model model) {
-        System.out.println("홈..");
         return "home"; 
     }
 	

@@ -8,5 +8,5 @@ public interface CommentService {
     void deleteByPostIdx(int postIdx);
     Comment reply(CommentDto commentDto, int postIdx);
     Comment edit(int postIdx, int commentIdx, CommentDto commentDto);
-    void delete(int commentIdx, String token);
+    boolean delete(int commentIdx);
 }

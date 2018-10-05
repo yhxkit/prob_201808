@@ -50,6 +50,7 @@
                         $('#joinEmailError').html("<p>"+data['message']+"</p>");
                     }).done(function (data) {
                     }).fail(function (data) {
+                    	errorHandling(data);
                     });
                 }
             }
@@ -65,7 +66,7 @@
                 window.location.reload();
             }).done(function (data, status, response) {
             }).fail(function (data) {
-             //   errorHandling(data);
+                errorHandling(data);
             });
 
         }

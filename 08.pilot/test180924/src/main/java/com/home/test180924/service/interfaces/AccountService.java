@@ -15,24 +15,22 @@ import java.util.Map;
 
 public interface AccountService {
 
-   // boolean errorCheck(Errors errors, final String value);
     boolean join(Account account);
     HashMap login(Account account);
     Account changePassword(Account account, Errors errors);
-    Account changeStatus(AccountDto accountDto, Errors errors);
+    Account changeStatus(Account account);
+    Account changeAuth(Account account);
     void delete(Account account);
     Page<Account> getAllUsers(int requiredUserListPage, int elementsNumberForOnePage);
-    long getTotalUser();
 
-//    Iterable<Account> findAccountsWithPage(String keyword);
     Iterable<Account> findAccountsWithPage(String keyword, int page, int elementsNumberForOnePage);
-
-//    boolean duplicatedCheck(String email, HttpServletResponse response, Errors errors);
 
     Account findByEmail(String email);
 
     Account findByPostsPostIdx(int postIdx);
+    Account findByCommentsCommentIdx(int commentIdx);
 
+    Account editNameAndPassword(Account account);
 
 
 }

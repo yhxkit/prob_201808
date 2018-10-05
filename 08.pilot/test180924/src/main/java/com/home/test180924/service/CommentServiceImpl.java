@@ -68,14 +68,9 @@ public class CommentServiceImpl implements CommentService {
         return commentRepository.save(origin);
     }
 
-    public void delete(int commentIdx, String token){
-        Account writer = accountRepository.findByCommentsCommentIdx(commentIdx);
-        String commentWriterEmail = writer.getEmail();
-            if(!writerCheckValidator.checkWriter(commentWriterEmail, token)){
-                return;
-            }
-
+    public boolean delete(int commentIdx){ //리턴이 필요한가...?
         commentRepository.delete(commentRepository.findByCommentIdx(commentIdx));
+        return true;
     }
 
 

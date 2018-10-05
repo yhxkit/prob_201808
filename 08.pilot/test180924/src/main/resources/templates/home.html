@@ -69,6 +69,11 @@
 		width: 85%
 		}
 
+	#myPageDiv{
+		margin: 10% auto;
+		width: 70%
+		}
+
     </style>
     <script type="text/javascript">
 
@@ -112,11 +117,11 @@
                     $('#labelForDisabledUser').html("<p> (정지된 계정입니다)</p>");
 				}
 
-                var tabs ='<li role="presentation" class="active" id="navBbs"><a href="">BBS</a></li>';
-                   // +'<li role="presentation"><a >MyPage</a></li>'; //마이페이지 넣고 싶으면 구현하기..
+                var tabs ='<li style="cursor:pointer" role="presentation" class="active" id="navBbs"><a href="">BBS</a></li>'
+                    +'<li style="cursor:pointer" role="presentation" id="navMyPage"><a onclick="javascript:toMyPage()">MyPage</a></li>';
 
                 if(currentUserScope=='ADMIN'){
-						 tabs += '<li role="presentation" id="navUsers"><a onclick="javascript: toUserList(1)">Users</a></li>'
+						 tabs += '<li role="presentation" style="cursor:pointer" id="navUsers"><a onclick="javascript: toUserList(1)">Users</a></li>'
 								+ '<div class="row" id="userSearchInput" hidden>'
 									+ '<div class="col-lg-3 col-md-3">'
 										+ '<div class="input-group">'
@@ -129,11 +134,19 @@
 								+ '</div>';
 					}
 	                    tabs +=  '<div class="row" id="postSearchInput">'
-									+ '<div class="col-lg-3 col-md-3">'
+									+ '<div class="col-lg-5 col-md-5">'
 										+ '<div class="input-group">'
-											+ '<input type="text" class="form-control" placeholder="Search post" id="postSearchKeyword">'
+											+ '<input type="text" class="form-control" placeholder="Search" id="postSearchKeyword">'
 											+ '<span class="input-group-btn">'
-												+ '<button class="btn btn-default" type="button" onclick="javascript:searchPost(1)">검색</button>'
+												+ '<button id="searchButtonForUser" class="btn btn-default" type="button">TITLE</button>'
+												+'<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">'
+											    +'<span class="caret"></span>'
+											   +' <span class="sr-only">Toggle Dropdown</span>'
+											  +'</button>'
+											 +' <ul class="dropdown-menu" role="menu">'
+											   +' <li><a onclick="javascript:changeSearchToPost()">TITLE</a></li>'
+											  + ' <li><a onclick="javascript:changeSearchToWriter()">WRITER</a></li>'
+											+ ' </ul>'
 											+ '</span>'
 										+ '</div>'
 									+'</div>'
@@ -190,11 +203,10 @@
             $.getJSON('http://localhost:8080/bbs?page='+currentPage+'&elementsNumberForOnePage='+postNumPerPage, function (data) {
            //     alert("페이지 객체로 변경한 데이터 "+JSON.stringify(data));
 
-
                 $(data['content']).each(function (num, ele) {//첫번째 인자가 인덱스, 두번째 인자가 엘리먼트
 
 
-                    listObj += '<tr style="cursor:pointer;" onclick="javascript:showDetail('+ele.postIdx+')" onmouseover="this.style.backgroundColor=\'#f1f1f1\'" onmouseout="this.style.backgroundColor=\'#ffffff\'"'
+                    listObj += '<tr style="cursor:pointer" onclick="javascript:showDetail('+ele.postIdx+')" onmouseover="this.style.backgroundColor=\'#f1f1f1\'" onmouseout="this.style.backgroundColor=\'#ffffff\'"'
                         +'><td hidden="hidden">' + ele.postIdx + '</td>'
                         + '<td>' + ele.title
                         + '</td><td>'
@@ -211,10 +223,21 @@
 
         } // showing bbs list end
 
+        
+        $(document).on('click', '#searchButtonForUser', function(event){
+        	event.preventDefault();
+        	searchPost(1, $('#searchButtonForUser').text());
+        });
 
-		function searchPost(currentPostSearchPage){
+		function searchPost(currentPostSearchPage, searchingCategory){
                 console.log("검색어 "+$('#postSearchKeyword').val());
-                var keyword =  JSON.stringify({"title" : $('#postSearchKeyword').val()});
+                console.log("검색 카테코리 "+searchingCategory);
+                
+                var keyword =  JSON.stringify({
+                	"keyword" : $('#postSearchKeyword').val(),
+                	"category" : searchingCategory
+                	});
+                
                 console.log("보내는 데이터 "+keyword);
 
                 $.ajax({
@@ -226,7 +249,7 @@
                     success: function (data) {
                         console.log("포스트 리스트를 가져옴...");
                         var listObj = "";
-                        $(data['posts']).each(function (num, ele) {//첫번째 인자가 인덱스, 두번째 인자가 엘리먼트
+                        $(data['posts']).each(function (num, ele) {
 
                             listObj += '<tr style="cursor:pointer" onclick="javascript:showDetail('+ele.postIdx+')" onmouseover="this.style.backgroundColor=\'#f1f1f1\'" onmouseout="this.style.backgroundColor=\'#ffffff\'"'
                                 +'><td hidden="hidden">' + ele.postIdx + '</td>'
@@ -238,8 +261,7 @@
 
                         $('#bbsTable tbody').eq(1).html(listObj);
 
-
-                        paginate(currentPostSearchPage, "javascript:searchPost", data, '#paging ul', 'totalPost');
+                        paginate(currentPostSearchPage, "javascript:searchPost", data, '#paging ul', Object.keys(data['posts']).length);
 
                     },
                     error: function (data) {
@@ -251,6 +273,16 @@
                 });
         }//searchPost ends
 
+        
+        function changeSearchToWriter(){
+        	$('#searchButtonForUser').text('WRITER');
+        }
+        
+        function changeSearchToPost(){
+        	$('#searchButtonForUser').text('TITLE');
+        }
+        
+        
 
 		function paginate(currentPage, funcName, data, pagingUl, totalElements){ //mapKeyForToTal는 서버에서 map을 page 객체로 변경하고 뺄것...
             //bbs 페이지네이션
@@ -295,10 +327,7 @@
 
 
 
-		function errorHandling(data) {
-
-            alert("멋땀에 또 이러는거죠.."+JSON.stringify(data));
-
+ 		function errorHandling(data) {
 
             if (data['responseJSON']['status'] == 401) {//토큰 만료 상태 //없는 계정
                 logout();
@@ -317,7 +346,7 @@
                 alert("정의하지 않은 에러.."+JSON.stringify(data));
 			}
         }
-
+ 
 
         function emailCheck(str){
             var regExp = /[0-9a-zA-Z][_0-9a-zA-Z-]*@[_0-9a-zA-Z-]+(\.[_0-9a-zA-Z-]+){1,2}$/;
@@ -384,6 +413,10 @@
 		<div id="adminPage" hidden>
 			<div id="userListPage" th:include="adminPage/userList"></div>
 		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div id="myPage" th:include="myPage/myPage" hidden></div>
 	</div>
 
 	

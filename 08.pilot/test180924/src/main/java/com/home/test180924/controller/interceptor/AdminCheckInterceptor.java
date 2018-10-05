@@ -26,9 +26,7 @@ public class AdminCheckInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String token =request.getHeader("token");
-        log.info("관리자 프리 핸들러");
-        log.debug("관리자 프리 핸들러 디버깅...머냐");
-        
+             log.debug("관리자 프리 핸들러");
         if(!jwt.parseToken(token).get("scope").equals(Auth.ADMIN.toString())){ // scope 가 ADMIN이 아니면
         	log.debug("관리자 페이지에 접근하려는 유저 "+jwt.parseToken(token).get("subject"));
             response.sendError(402, "관리자 권한이 필요합니다");

@@ -46,10 +46,10 @@ JWTImpl implements JWT{
     
     
     @Override
-    public Map parseToken(String token) {
+    public HashMap<String, ?> parseToken(String token) {
     	
     	//This line will throw an exception if it is not a signed JWS (as expected)
-		Map tokenMap = new HashMap();
+		HashMap tokenMap = new HashMap();
 
         boolean validToken = false;
     	try {
@@ -75,6 +75,7 @@ JWTImpl implements JWT{
 			validToken=true;
 
     	}catch (Exception e) {
+    	    // ExpiredJwtException, UnsupportedJwtException, MalformedJwtException, SignatureException, IllegalArgumentException;
     		log.debug(token); //에러시 익셉션 별로 체크할 수 있게 정리...
     		log.info("유효하지 않은 토큰 "+e);
 		}
