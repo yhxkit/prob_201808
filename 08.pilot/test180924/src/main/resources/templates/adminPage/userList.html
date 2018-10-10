@@ -20,7 +20,7 @@
                 success: function (data) {
                     console.log("유저 리스트를 가져옴..."+JSON.stringify(data));
                     var userListObj = "";
-                    $(data['users']).each(function (num, ele) {//첫번째 인자가 인덱스, 두번째 인자가 엘리먼트
+                    $(data['users']).each(function (num, ele) {
 
                         userListObj +='<tr><td >'
                             +ele.email+'</td><td>'
@@ -68,7 +68,7 @@
                     $('#navUsers').attr('class', 'active');
 
                     var userListObj = "";
-                    $(data['content']).each(function (num, ele) {//첫번째 인자가 인덱스, 두번째 인자가 엘리먼트
+                    $(data['content']).each(function (num, ele) {
 
                                 userListObj +='<tr><td >'
                                     +ele.email+'</td><td>'
@@ -78,7 +78,6 @@
                                     +ele.auth+'&nbsp;&nbsp; <p class="glyphicon glyphicon-eye-open">[권한변경]</p></td>'
                                     +'<td style="cursor:pointer" onclick="javascript:changeUserState(\''+ele.email+'\', \'STATUS\')" > '
                                     +ele.status +'&nbsp;&nbsp; <p class="glyphicon glyphicon-refresh">[상태변경]</p></td>';
-                                  //  +'<td style="cursor:pointer" onclick="javascript:changeUserStatus(\''+ele.email+'\')" class="glyphicon glyphicon-refresh"> 상태변경</td></tr>';
                        });
 
                         $('#userListTable tbody').eq(1).html(userListObj);
@@ -108,7 +107,7 @@
                 headers: {'token': localStorage.getItem('currentUserToken')},
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
-                    alert("성공하지 않나..? "+JSON.stringify(data));
+                  //  alert("성공하지 않나..? "+JSON.stringify(data));
                     if(data['result']=='fail'){
                         alert("변경 실패 : "+data['message']);
                     }else{
@@ -120,7 +119,7 @@
                     toUserList(1);
                 },
                 error: function(data){
-                    alert("? "+JSON.stringify(data));
+                   // alert("? "+JSON.stringify(data));
                     errorHandling(data);
                 }
 

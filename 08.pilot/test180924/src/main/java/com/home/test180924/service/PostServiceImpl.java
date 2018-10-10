@@ -60,7 +60,7 @@ public class PostServiceImpl implements PostService {
           log.debug("포스트의 타이틀은 null일 수 없음");
         }
         if(postDto.getPostContent().trim().isEmpty()){
-            log.debug("포스트의 내용은 null일 수 없음");
+          log.debug("포스트의 내용은 null일 수 없음");
         }
 
 
@@ -71,6 +71,12 @@ public class PostServiceImpl implements PostService {
         postRepository.save(post);
         return postRepository.findByPostIdx(post.getPostIdx());
     }
+
+    @Override
+    public void deleteAll(Iterable<Post> userPosts){
+        postRepository.deleteAll(userPosts);
+    }
+
 
     @Override
     public Post detail(int postIdx){

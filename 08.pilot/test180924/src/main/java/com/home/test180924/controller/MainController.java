@@ -1,15 +1,15 @@
 package com.home.test180924.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.swing.text.html.Option;
-
 import com.home.test180924.entity.AccountDto;
+import com.home.test180924.entity.Comment;
+import com.home.test180924.entity.Post;
+import com.home.test180924.service.interfaces.CommentService;
+import com.home.test180924.service.interfaces.PostService;
 import com.home.test180924.service.validator.AccountValidator;
 import com.home.test180924.util.PasswordEncryptUtil;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import com.home.test180924.controller.responseUtil.EntityForResponse;
@@ -20,21 +20,29 @@ import com.home.test180924.service.jwt.JWT;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 @Slf4j
 @RestController
 public class MainController {
 
     private AccountService accountService;
+    private PostService postService;
+    private CommentService commentService;
     private EntityForResponse responseEntity;
     private JWT jwt;
     private AccountValidator accountValidator;
     private PasswordEncryptUtil passwordEncryptUtil;
 
-    public MainController(AccountService accountService, EntityForResponse responseEntity, JWT jwt, AccountValidator accountValidator, PasswordEncryptUtil passwordEncryptUtil) {
+    public MainController(AccountService accountService, CommentService commentService, PostService postService,EntityForResponse responseEntity, JWT jwt, AccountValidator accountValidator, PasswordEncryptUtil passwordEncryptUtil) {
         this.accountService = accountService;
+        this.postService = postService;
+        this.commentService = commentService;
         this.responseEntity = responseEntity;
         this.jwt = jwt;
         this.accountValidator = accountValidator;
@@ -120,7 +128,18 @@ public class MainController {
             resultMap.put("message", "없는 계정입니다.");
             return resultMap;
         }
+
+        Iterable<Post> userPosts = postService.findByWriter(deletingUserEmail);
+        List<Integer> deletingPostsIdx  = StreamSupport.stream(userPosts.spliterator(), false).map(Post::getPostIdx).collect(Collectors.toList());
+        deletingPostsIdx.stream().forEach(commentService::deleteByPostIdx); //게시글의 코멘트를 삭제..
+
+        postService.deleteAll(userPosts); //유저의 게시글 삭제...
+
+        Iterable<Comment> userComments = commentService.findByCommentWriter(deletingUserEmail);
+        commentService.deleteAll(userComments); //유저의 코멘트 삭제
+
         resultMap.put("result", "success");
+
         accountService.delete(userAccount.get());
         log.debug("계정 삭제 "+ deletingUserEmail);
 
@@ -131,7 +150,6 @@ public class MainController {
 
 //    @PutMapping("/myPage/update") //put은 무조건 DTO 써야됨 ㅠ
 //    public  void update(Account account, HttpServletRequest request){
-
 //        log.info(""+account); //안됨!
 //        log.info("바인딩 테스트 ");
 //    }
@@ -183,13 +201,6 @@ public class MainController {
     }
 
 
-//        @PostMapping("/myPage/update")
-//    public void startUpdate(HttpServletRequest request,  Account account){
-//
-//        log.info("바인딩 체크~"+account); //JSON 아니고 자바스크립트 객체값으로 주면 바인딩 잘됨;;.
-//            log.info("바인딩 체크~"+account);
-//    }
-
 
 
 //아래로 구현 안됨
@@ -197,13 +208,10 @@ public class MainController {
 //    public ResponseEntity<?> logout(HttpServletRequest request){
 //        log.debug("로그아웃..은 jwt destroy가 안돼서 그냥 웹 스토리지에서 지우기만 하는 걸로.. ");
 //        return responseEntity.get("로그아웃 됨..");
-
 //    }
 
 
 
-
-	
 	
 	
 }

@@ -17,7 +17,7 @@
                 'postContent': textareaValue,
                 'postWriter': localStorage.getItem('currentUserEmail')
 
-            }); //모냐...?
+            });
 
             console.log("보내는 데이터 "+writeData);
             console.log("리퀘스트헤더에 셋할 토큰.. "+localStorage.getItem('currentUserToken'));
@@ -25,7 +25,7 @@
             writePost(writeData);
         });
 
-        function writePost(writeData){  //RequestBody 이용해서 Dto 객체로 넘겨야할 것 같음. 엔티티는 연관을 복잡하게 해놔서 오류;
+        function writePost(writeData){
 
             $.ajax({
                 url: 'http://localhost:8080/bbs/write',

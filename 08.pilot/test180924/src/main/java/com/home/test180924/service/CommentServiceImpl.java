@@ -45,6 +45,17 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    public boolean deleteAll(Iterable<Comment> userComments) {
+        commentRepository.deleteAll(userComments);
+        return true;
+    }
+
+    @Override
+    public Iterable<Comment> findByCommentWriter(String email) {
+        return commentRepository.findByCommentWriter_Email(email);
+    }
+
+    @Override
     public Comment reply(CommentDto commentDto, int postIdx) {
     		
     	Comment comment = new Comment();

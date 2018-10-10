@@ -29,16 +29,14 @@ public class AccountServiceImpl implements AccountService {
 	private AccountRepository accountRepository;
 	private AccountValidator accountValidator;
 	private PasswordEncryptUtil passwordEncryptUtil;
-	private MessageSource messageSource;
 	private Paging paging;
 	private JWT jwt;
 
 	//autowired 보다 생성자 방식이 선호된다고 함.. 코드는 길어지지만 테스트등에서 해당 객체를 생성해서 사용하고 싶을때, autowired로 주입받은 필드에 대해 테스트가 불가해서..
-    public AccountServiceImpl(AccountRepository accountRepository, PasswordEncryptUtil passwordEncryptUtil, AccountValidator accountValidator, MessageSource messageSource,  Paging paging, JWT jwt) {
+    public AccountServiceImpl(AccountRepository accountRepository, PasswordEncryptUtil passwordEncryptUtil, AccountValidator accountValidator, Paging paging, JWT jwt) {
         this.accountRepository = accountRepository;
         this.passwordEncryptUtil = passwordEncryptUtil;
         this.accountValidator = accountValidator;
-        this.messageSource = messageSource;
         this.paging = paging;
         this.jwt = jwt;
     }
@@ -86,13 +84,13 @@ public class AccountServiceImpl implements AccountService {
         return  resultMap;
     }
 
-    @Override
+/*    @Override
 	public Account changePassword(Account account, Errors errors){ // 그냥 update 로 changeStatus 메서드를 통합하고, null 아닌...걸로 하면 권한 관련해서 status 변경에 문제가 있겠지..?
 		Account checkAccount = accountRepository.findByEmail(account.getEmail());
         checkAccount.setPassword(passwordEncryptUtil.encrypt(account.getPassword()));
         accountRepository.save(checkAccount);
 		return accountRepository.findByEmail(account.getEmail());
-	}
+	}*/
 
     @Override
     public Account changeAuth(Account account) {

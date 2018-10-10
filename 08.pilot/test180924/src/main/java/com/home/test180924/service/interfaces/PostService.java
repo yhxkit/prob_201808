@@ -14,7 +14,8 @@ public interface PostService {
     Post detail(int postIdx);
     Post edit(int postIdx, PostDto postDto);
     void delete(int postIdx);
-//    long getTotalPost();
+    void deleteAll(Iterable<Post> userPosts);
+
 
     Iterable<Post> findPostsWithPage(String keyword, int page, int elementsNumberForOnePage);
 

@@ -37,19 +37,6 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
 
-    @Bean
-    public MessageSource messageSource(){
-
-        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-
-        YamlPropertiesFactoryBean bean = new YamlPropertiesFactoryBean();
-        bean.setResources(new ClassPathResource("message/messages.yml"));
-        messageSource.setCommonMessages(bean.getObject());
-
-        messageSource.setDefaultEncoding("UTF-8");
-
-        return messageSource;
-    }
 
 
 

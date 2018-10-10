@@ -17,7 +17,6 @@ public interface AccountService {
 
     boolean join(Account account);
     HashMap login(Account account);
-    Account changePassword(Account account, Errors errors);
     Account changeStatus(Account account);
     Account changeAuth(Account account);
     void delete(Account account);
