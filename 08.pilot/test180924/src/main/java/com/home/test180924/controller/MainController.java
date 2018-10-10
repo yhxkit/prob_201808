@@ -116,7 +116,8 @@ public class MainController {
 
         Optional<Account> userAccount = Optional.ofNullable(accountService.findByEmail(deletingUserEmail));
         if(!userAccount.isPresent()){
-            resultMap.put("fail", "없는 계정입니다.");
+            resultMap.put("result", "fail");
+            resultMap.put("message", "없는 계정입니다.");
             return resultMap;
         }
         resultMap.put("result", "success");
@@ -126,6 +127,16 @@ public class MainController {
         return resultMap;
     }
 
+
+
+//    @PutMapping("/myPage/update") //put은 무조건 DTO 써야됨 ㅠ
+//    public  void update(Account account, HttpServletRequest request){
+
+//        log.info(""+account); //안됨!
+//        log.info("바인딩 테스트 ");
+//    }
+
+
     @PutMapping(value="/myPage/update", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public HashMap<String, String> update(HttpServletRequest request, @RequestBody AccountDto accountDto){
         HashMap<String, String> resultMap = new HashMap<>();
@@ -133,14 +144,15 @@ public class MainController {
         String token = request.getHeader("token");
         Map userMap = jwt.parseToken(token);
         String email =(String)userMap.get("subject");
-        log.info("정보 변경 "+email);
+        log.debug("정보 변경 "+email);
 
         String name = accountDto.getName();
         String password = accountDto.getPassword();
 
         Optional<Account> userAccount = Optional.ofNullable( accountService.findByEmail(email));
         if(!userAccount.isPresent()){
-            resultMap.put("fail", "없는 계정입니다.");
+            resultMap.put("result", "fail");
+            resultMap.put("message", "없는 계정입니다.");
             return resultMap;
         }
 
@@ -169,6 +181,15 @@ public class MainController {
         HashMap<String, ?> resultMap = accountService.login(account);
         return resultMap;
     }
+
+
+//        @PostMapping("/myPage/update")
+//    public void startUpdate(HttpServletRequest request,  Account account){
+//
+//        log.info("바인딩 체크~"+account); //JSON 아니고 자바스크립트 객체값으로 주면 바인딩 잘됨;;.
+//            log.info("바인딩 체크~"+account);
+//    }
+
 
 
 //아래로 구현 안됨

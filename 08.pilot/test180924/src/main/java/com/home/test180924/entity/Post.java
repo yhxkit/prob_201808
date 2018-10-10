@@ -33,7 +33,7 @@ public class Post {
     private Account postWriter;
 
     @OneToMany(mappedBy = "belongingPost")
-    @JsonIgnore//이거 없으면 재귀적으로 돌면서 오류가 납니다//Expected ',' instead of ''
+    @JsonIgnore//이거 없으면 재귀적으로 돌면서 오류가 납니다
     private List<Comment> comments;
 
 

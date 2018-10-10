@@ -65,13 +65,21 @@ public class AdminController {
         HashMap<String, Iterable> userMap = new HashMap();
         userMap.put("users", users);
        // Page<Account> users =accountService.findAccountsWithPageTest(keyword, page, Integer.parseInt(request.getParameter("elementsNumberForOnePage")));
-
         return userMap;
-
     }
 
+//    @GetMapping("/admin/search") //겟으로 안한이유는.... page관련 파라미터도 있는데 굳이 전송할 데이터 uri에 일일이 파라미터로 지정하고 uri 인코딩해서 보내고 싶지 않았기 때문
+//    public void findUsers(Account account, HttpServletRequest request){//@PathVariable("1") String keyword //어... 메일에 . 때문에 url에 문제 생겨서 get하고 rest로 하기 어려울 거 같아.
+//        log.info("get 검색~ "+account);
+//    }
+
+
+
+
+
+
     @PutMapping(value="/admin/{1}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public HashMap<String, String> changeUserStatus(@RequestBody Searching searching){ //@PathVariable("1") String userEmail, 안써.. // 여기 이메일에는 . 들어가서 url로 받을 때 오류...;
+    public HashMap<String, String> changeUserStatus(@RequestBody Searching searching){
         String userEmail = searching.getKeyword();
         String state = searching.getCategory();
         log.debug(userEmail+" 유저 상태 변경 "+state);

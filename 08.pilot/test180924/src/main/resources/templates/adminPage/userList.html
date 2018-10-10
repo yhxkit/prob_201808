@@ -12,11 +12,11 @@
             console.log("보내는 데이터 "+keyword);
 
             $.ajax({
-                type: 'Post',
+                type: 'post',//get으로 보내려면 uri 인코딩...해야하는데.. 그냥 보냄..
                 url: 'http://localhost:8080/admin/search?page='+currentUserSearchPage+'&elementsNumberForOnePage='+postNumPerPage,
                 headers: {'token': localStorage.getItem('currentUserToken')},
                 contentType: 'application/json; charset=utf-8',
-                data: keyword,
+                data:keyword,
                 success: function (data) {
                     console.log("유저 리스트를 가져옴..."+JSON.stringify(data));
                     var userListObj = "";
@@ -103,19 +103,24 @@
             console.log("상태 변경 데이터 "+send);
             $.ajax({
                 type: 'Put',
-                url: 'http://localhost:8080/admin/'+userEmail,
+                url:  'http://localhost:8080/admin/'+userEmail,
                 data: send,
                 headers: {'token': localStorage.getItem('currentUserToken')},
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
+                    alert("성공하지 않나..? "+JSON.stringify(data));
                     if(data['result']=='fail'){
                         alert("변경 실패 : "+data['message']);
                     }else{
                         console.log("변경되었습니다.");
                     }
+
+                    localStorage.setItem("currentUserScope", userScope);
+                    localStorage.setItem("currentUserStatus", userStatus);
                     toUserList(1);
                 },
                 error: function(data){
+                    alert("? "+JSON.stringify(data));
                     errorHandling(data);
                 }
 

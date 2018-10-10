@@ -6,13 +6,11 @@ import java.util.Map;
 
 import javax.xml.bind.DatatypeConverter;
 
+import io.jsonwebtoken.*;
 import org.springframework.stereotype.Component;
 
 import com.home.test180924.entity.Account;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -74,11 +72,18 @@ JWTImpl implements JWT{
 
 			validToken=true;
 
-    	}catch (Exception e) {
-    	    // ExpiredJwtException, UnsupportedJwtException, MalformedJwtException, SignatureException, IllegalArgumentException;
-    		log.debug(token); //에러시 익셉션 별로 체크할 수 있게 정리...
-    		log.info("유효하지 않은 토큰 "+e);
+    	}catch (ExpiredJwtException e) {
+			log.debug("ExpiredJwtException : "+token);
+		}catch(UnsupportedJwtException e) {
+			log.debug("UnsupportedJwtException : "+token);
+		}catch(MalformedJwtException e) {
+			log.debug("MalformedJwtException : "+token);
+		}catch(SignatureException e) {
+			log.debug("SignatureException : "+token);
+		}catch(IllegalArgumentException e) {
+			log.debug("IllegalArgumentException : "+token);
 		}
+
 
 		tokenMap.put("validToken",  validToken);
     	

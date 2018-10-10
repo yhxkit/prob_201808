@@ -100,6 +100,7 @@
             console.log("현재 로그인 된 이용자의 토큰! "+currentUserToken);
             console.log("현재 로그인 된 이용자의 메일! "+currentUserEmail);
             console.log("현재 로그인 된 이용자의 권한! "+currentUserScope);
+            console.log("현재 로그인 된 이용자의 상태! "+currentUserStatus);
 
             if(currentUserToken==null){
 				$('#logout').hide();
@@ -336,7 +337,7 @@
             }else if (data['responseJSON']['status'] == 402) { //관리자 권한 필요
                 alert(data['responseJSON']['message']);
                 window.location.reload();
-            }else if (data['responseJSON']['status'] == 404) { //정지된 계정 //일반 게스트들과 같은 권한..
+            }else if (data['responseJSON']['status'] == 403) {//정지된 계정 // 비로그인 유저와 같은 권한
                 alert(data['responseJSON']['message']);
                 window.location.reload();
             }else if(data['responseJSON']['status'] == 406){ //가입 조건 불만족..

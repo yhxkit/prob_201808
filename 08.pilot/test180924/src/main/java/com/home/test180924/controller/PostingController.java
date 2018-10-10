@@ -72,7 +72,7 @@ public class PostingController {
 
     @PutMapping("/bbs/{1}")
     public ResponseEntity<?> editPost(@RequestBody PostDto postDto, HttpServletRequest request, @PathVariable("1") int postIdx){
-        log.debug("포스트 수정 "+postDto.getTitle()+postDto.getPostContent()+postDto.getPostIdx());
+        log.debug("포스트 수정 "+postDto.getTitle()+" : "+postDto.getPostContent()+ "("+postDto.getPostIdx()+")");
         HashMap<String, String> resultMap = new HashMap();
         String token = request.getHeader("token");
 
@@ -85,7 +85,6 @@ public class PostingController {
             return responseEntity.get(resultMap);
         }
 
-        resultMap.put("result", "success");
         return responseEntity.get(postService.edit(postIdx, postDto));
     }
 
