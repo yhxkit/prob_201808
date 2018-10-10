@@ -27,7 +27,7 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "belonging_post_idx")
-    private Post belongingPost; // 프론트에서 파라미터로 받을때 대소문자 구분해서 보내야 제대로 커맨드 객체에 매핑됩니다
+    private Post belongingPost;
 
     @ManyToOne
     @JoinColumn(name = "comment_writer_email")

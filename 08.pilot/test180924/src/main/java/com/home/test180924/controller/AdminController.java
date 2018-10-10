@@ -61,14 +61,9 @@ public class AdminController {
         Iterable<Account> users =accountService.findAccountsWithPage(keyword, page, Integer.parseInt(request.getParameter("elementsNumberForOnePage")));
         HashMap<String, Iterable> userMap = new HashMap();
         userMap.put("users", users);
-       // Page<Account> users =accountService.findAccountsWithPageTest(keyword, page, Integer.parseInt(request.getParameter("elementsNumberForOnePage")));
         return userMap;
     }
 
-//    @GetMapping("/admin/search") //겟으로 안한이유는.... page관련 파라미터도 있는데 굳이 전송할 데이터 uri에 일일이 파라미터로 지정하고 uri 인코딩해서 보내고 싶지 않았기 때문...
-//    public void findUsers(Account account, HttpServletRequest request){//@PathVariable("1") String keyword
-//        log.info("get 검색~ "+account);
-//    }
 
     @PutMapping(value="/admin/{1}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public HashMap<String, String> changeUserStatus(@RequestBody Searching searching){

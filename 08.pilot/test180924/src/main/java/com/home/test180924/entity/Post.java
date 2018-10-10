@@ -31,12 +31,10 @@ public class Post {
 
     @ManyToOne
     @JoinColumn(name = "post_writer_email")
-    @Lazy
     private Account postWriter;
 
     @OneToMany(mappedBy = "belongingPost")
-    @JsonIgnore//이거 없으면 재귀적으로 돌면서 오류가 납니다
-    @Lazy
+    @JsonIgnore
     private List<Comment> comments;
 
 

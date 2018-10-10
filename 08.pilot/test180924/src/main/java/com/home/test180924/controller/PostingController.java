@@ -69,7 +69,6 @@ public class PostingController {
     @GetMapping("/bbs/{1}")
     public ResponseEntity<?> detail(@PathVariable("1") int postIdx){
         log.debug("상세보기 "+postIdx);
-        //일단 게시글을 열때는 디폴트로 코멘트 첫번째 페이지 받아오고, 나머지 코멘트 페이지는 ajax로
         List<Object> postDetailAndCommentList = new ArrayList(); 
         postDetailAndCommentList.add(postService.detail(postIdx));
         postDetailAndCommentList.add( commentService.commentListWithPage(postIdx));
@@ -182,10 +181,6 @@ public class PostingController {
     	     searchMap.put("posts", posts);
     	}else if(PostCategory.WRITER.toString().equals( category )) {
     		log.debug("포스트 작성자 이메일로 검색"+keyword);
-//    		 int page=0;
-//     	     if(request.getParameter("page")!=null){
-//     	         page = Integer.parseInt(request.getParameter("page"))-1;
-//     	     }
 
      	     Iterable<Post> posts =postService.findByWriter(keyword);
      	     searchMap.put("posts", posts);
