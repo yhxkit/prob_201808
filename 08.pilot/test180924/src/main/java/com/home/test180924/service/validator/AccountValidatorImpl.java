@@ -33,21 +33,6 @@ public class AccountValidatorImpl implements AccountValidator  {
     }
 
     @Override
-    public void validate(Object target, Errors errors) {
-        Account account =(Account)target;
-        if(account.getEmail()==null || account.getEmail().trim().isEmpty()){
-        //    errors.rejectValue("email", "EmailIsRequired");
-            errors.rejectValue("email", "required");
-        } else {
-            Matcher matcher = pattern.matcher(account.getEmail());
-            if(!matcher.matches()){
-                errors.rejectValue("email", "invalidEmail");
-            }
-        }
-
-    }
-
-    @Override
     public boolean validate(Object target) {
         Account account =(Account)target;
             if (account.getEmail() == null || account.getEmail().trim().isEmpty()) {

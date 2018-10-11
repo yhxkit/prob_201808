@@ -22,13 +22,11 @@ public class CommentServiceImpl implements CommentService {
     private CommentRepository commentRepository;
     private AccountRepository accountRepository;
     private PostRepository postRepository;
-    private WriterCheckValidator writerCheckValidator;
 
-    public CommentServiceImpl(CommentRepository commentRepository, PostRepository postRepository, AccountRepository accountRepository, WriterCheckValidator writerCheckValidator) {
+    public CommentServiceImpl(CommentRepository commentRepository, PostRepository postRepository, AccountRepository accountRepository) {
         this.commentRepository = commentRepository;
         this.postRepository = postRepository;
         this.accountRepository = accountRepository;
-        this.writerCheckValidator = writerCheckValidator;
     }
 
     @Override
@@ -61,7 +59,6 @@ public class CommentServiceImpl implements CommentService {
     	comment.setBelongingPost(postRepository.findByPostIdx(postIdx));
     	
     	Account writer = accountRepository.findByEmail(commentDto.getCommentWriterEmail());
-    	System.out.println(writer.getEmail()+writer.getName());
     	comment.setCommentWriter(writer);
     	comment.setCommentContent(commentDto.getCommentContent());
     	

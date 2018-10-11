@@ -36,16 +36,14 @@ public class MainController {
     private EntityForResponse responseEntity;
     private JWT jwt;
     private AccountValidator accountValidator;
-    private PasswordEncryptUtil passwordEncryptUtil;
 
-    public MainController(AccountService accountService, CommentService commentService, PostService postService,EntityForResponse responseEntity, JWT jwt, AccountValidator accountValidator, PasswordEncryptUtil passwordEncryptUtil) {
+    public MainController(AccountService accountService, CommentService commentService, PostService postService,EntityForResponse responseEntity, JWT jwt, AccountValidator accountValidator) {
         this.accountService = accountService;
         this.postService = postService;
         this.commentService = commentService;
         this.responseEntity = responseEntity;
         this.jwt = jwt;
         this.accountValidator = accountValidator;
-        this.passwordEncryptUtil = passwordEncryptUtil;
     }
 
 
@@ -69,16 +67,19 @@ public class MainController {
         HashMap<String, String> resultMap = new HashMap<>();
 
         if(accountValidator.validate(account)){
+         //   resultMap.put("result", "fail");
             resultMap.put("message", "적합한 이메일 형식이 아닙니다");
             return responseEntity.get(resultMap);
         }
 
        if( accountValidator.duplicatedCheck(account.getEmail()) ){
+          // resultMap.put("result", "fail");
            resultMap.put("message", "이미 존재하는 계정입니다");
            return responseEntity.get(resultMap);
        }
 
         accountService.join(account);
+       // resultMap.put("result", "success");
         resultMap.put("message", account.getEmail()+"님, 가입을 축하합니다");
         log.debug(account.getEmail()+" 신규 가입");
         return responseEntity.get(resultMap);
@@ -142,7 +143,6 @@ public class MainController {
         return resultMap;
     }
 
-
     @PutMapping(value="/myPage/update", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public HashMap<String, String> update(HttpServletRequest request, @RequestBody AccountDto accountDto){
         HashMap<String, String> resultMap = new HashMap<>();
@@ -189,5 +189,8 @@ public class MainController {
     }
 
 
+
+	
+	
 }
 
