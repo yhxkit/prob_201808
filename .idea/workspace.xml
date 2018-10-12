@@ -62,17 +62,6 @@
       <change afterPath="$PROJECT_DIR$/08.pilot/test180924/logs/application.log.2018-10-10.3.gz" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/08.pilot/test180924/logs/application.log.2018-10-10.4.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/controller/PostingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/controller/PostingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/entity/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/entity/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/entity/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/entity/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/entity/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/entity/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/AccountServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/CommentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/validator/AccountValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/validator/AccountValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/validator/AccountValidatorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/validator/AccountValidatorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/adminPage/userList.html" beforeDir="false" afterPath="$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/adminPage/userList.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/../test18081702/target/" />
@@ -102,7 +91,7 @@
     <session id="65180958">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="68" />
+          <entry key="project.closed" value="69" />
           <entry key="project.open.time.1" value="4" />
           <entry key="project.open.time.108" value="1" />
           <entry key="project.open.time.12" value="1" />
@@ -124,7 +113,7 @@
           <entry key="project.open.time.36" value="1" />
           <entry key="project.open.time.4" value="5" />
           <entry key="project.open.time.40" value="4" />
-          <entry key="project.open.time.44" value="2" />
+          <entry key="project.open.time.44" value="3" />
           <entry key="project.open.time.45" value="2" />
           <entry key="project.open.time.49" value="1" />
           <entry key="project.open.time.5" value="4" />
@@ -138,7 +127,7 @@
           <entry key="project.open.time.79" value="1" />
           <entry key="project.open.time.80" value="1" />
           <entry key="project.open.time.9" value="4" />
-          <entry key="project.opened" value="70" />
+          <entry key="project.opened" value="71" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -146,7 +135,7 @@
           <entry key="class" value="18" />
           <entry key="html" value="69" />
           <entry key="iml" value="2" />
-          <entry key="java" value="242" />
+          <entry key="java" value="250" />
           <entry key="jsp" value="17" />
           <entry key="md" value="114" />
           <entry key="mf" value="1" />
@@ -161,7 +150,7 @@
           <entry key="CLASS" value="18" />
           <entry key="HTML" value="69" />
           <entry key="IDEA_MODULE" value="2" />
-          <entry key="JAVA" value="242" />
+          <entry key="JAVA" value="250" />
           <entry key="JSP" value="17" />
           <entry key="Manifest" value="1" />
           <entry key="Markdown" value="112" />
@@ -178,7 +167,7 @@
           <entry key="jsp" value="2001" />
           <entry key="md" value="13157" />
           <entry key="properties" value="201" />
-          <entry key="txt" value="572" />
+          <entry key="txt" value="579" />
           <entry key="xml" value="943" />
           <entry key="yml" value="81" />
         </counts>
@@ -189,7 +178,7 @@
           <entry key="JAVA" value="19695" />
           <entry key="JSP" value="2001" />
           <entry key="Markdown" value="13145" />
-          <entry key="PLAIN_TEXT" value="584" />
+          <entry key="PLAIN_TEXT" value="591" />
           <entry key="Properties" value="201" />
           <entry key="SQL" value="1" />
           <entry key="XML" value="942" />
@@ -212,130 +201,64 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/adminPage/userList.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2299">
-              <caret line="121" selection-start-line="121" selection-end-line="121" />
-              <folding>
-                <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-                <element signature="e#101#107#0" expanded="true" />
-                <element signature="e#107#113#0" expanded="true" />
-                <element signature="n#style#0;n#td#4;n#tr#0;n#!!top" expanded="true" />
-                <element signature="e#242#248#0" expanded="true" />
-                <element signature="e#248#254#0" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-                <element signature="e#80#86#0" expanded="true" />
-                <element signature="e#86#92#0" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#!!top" expanded="true" />
-                <element signature="e#232#238#0" expanded="true" />
-                <element signature="e#238#244#0" expanded="true" />
-                <element signature="e#4#10#0" expanded="true" />
-                <element signature="e#10#16#0" expanded="true" />
-                <element signature="e#71#77#0" expanded="true" />
-                <element signature="e#77#83#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="722">
+              <caret line="38" selection-start-line="38" selection-end-line="38" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/bbs/commentList.html">
+        <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/validator/AccountValidatorImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-62" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/bbs/commentWrite.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-969">
-              <caret line="42" column="13" lean-forward="true" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+            <state relative-caret-position="855">
+              <caret line="59" selection-start-line="59" selection-end-line="59" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/bbs/detail.html">
+        <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/validator/AccountValidator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2394">
-              <folding>
-                <element signature="e#38#44#0" expanded="true" />
-                <element signature="e#44#50#0" expanded="true" />
-                <element signature="e#50#56#0" expanded="true" />
-                <element signature="e#56#62#0" expanded="true" />
-                <element signature="e#62#68#0" expanded="true" />
-                <element signature="e#0#6#0" expanded="true" />
-                <element signature="e#6#12#0" expanded="true" />
-                <element signature="e#12#18#0" expanded="true" />
-                <element signature="e#18#24#0" expanded="true" />
-                <element signature="e#24#30#0" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
-                <element signature="e#163#169#0" expanded="true" />
-                <element signature="e#169#175#0" expanded="true" />
-                <element signature="e#175#181#0" expanded="true" />
-                <element signature="e#181#187#0" expanded="true" />
-                <element signature="e#187#193#0" expanded="true" />
-                <element signature="n#style#0;n#a#1;n#!!top" expanded="true" />
-                <element signature="e#301#307#0" expanded="true" />
-                <element signature="e#307#313#0" expanded="true" />
-                <element signature="e#313#319#0" expanded="true" />
-                <element signature="e#319#325#0" expanded="true" />
-                <element signature="e#325#331#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="57">
+              <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/header/join.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/validator/WriterCheckValidator.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/validator/WriterCheckValidatorImpl.java">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/AccountServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-171" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/CommentServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/header/login.html">
+        <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/CommentServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/PostServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1012">
-              <folding>
-                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="-38">
+              <caret line="35" column="43" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/header/logout.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/bbs/write.html">
+        <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/controller/AdminController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-803">
-              <folding>
-                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="-2">
+              <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -470,10 +393,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="99" />
-    <option name="y" value="28" />
+    <option name="x" value="86" />
     <option name="width" value="1591" />
-    <option name="height" value="921" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -481,18 +403,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="prob_201808" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="test180809" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -746,32 +656,22 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="adminPage" type="462c0819:PsiDirectoryNode" />
             </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
             <path>
-              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
-              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
-              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
-              <item name="test180924" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="bbs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="prob_201808" type="b2602c69:ProjectViewProjectNode" />
-              <item name="prob_201808" type="462c0819:PsiDirectoryNode" />
-              <item name="08.pilot" type="462c0819:PsiDirectoryNode" />
-              <item name="test180924" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="header" type="462c0819:PsiDirectoryNode" />
+              <item name="prob_201808" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="test180809" type="2674bda8:ScopeViewTreeModel$GroupNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -953,10 +853,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="47" y="60" width="1591" height="921" extended-state="0" />
+    <frame x="86" y="0" width="1591" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48522168" visible="true" weight="0.2697583" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48522168" visible="true" weight="0.27302417" />
       <window_info id="Structure" order="1" sideWeight="0.5147783" side_tool="true" weight="0.21006945" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -1053,7 +953,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="180903 09:13" />
     <MESSAGE value="180904 17:36" />
     <MESSAGE value="180905 17:35" />
     <MESSAGE value="180906 17:41" />
@@ -1078,7 +977,8 @@
     <MESSAGE value="181010 10:18 계정 삭제시 포스트 및 코멘트 같이 삭제" />
     <MESSAGE value="181010 15:20" />
     <MESSAGE value="181010 15:25" />
-    <option name="LAST_COMMIT_MESSAGE" value="181010 15:25" />
+    <MESSAGE value="181011 09:17" />
+    <option name="LAST_COMMIT_MESSAGE" value="181011 09:17" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1236,11 +1136,6 @@
     <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/jwt/JWT.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/PostServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1026" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/Test180924Application.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -1267,13 +1162,6 @@
     <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/controller/interceptor/LoginCheckInterceptor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-437" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/controller/AdminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5">
-          <caret line="65" selection-start-line="65" selection-end-line="65" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/controller/HomeController.java">
@@ -1348,53 +1236,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/validator/AccountValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/validator/AccountValidatorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="722">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/validator/WriterCheckValidator.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/validator/WriterCheckValidatorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-43" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/adminPage/userList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2299">
-          <caret line="121" selection-start-line="121" selection-end-line="121" />
-          <folding>
-            <element signature="n#style#0;n#td#3;n#tr#0;n#!!top" expanded="true" />
-            <element signature="e#101#107#0" expanded="true" />
-            <element signature="e#107#113#0" expanded="true" />
-            <element signature="n#style#0;n#td#4;n#tr#0;n#!!top" expanded="true" />
-            <element signature="e#242#248#0" expanded="true" />
-            <element signature="e#248#254#0" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="e#80#86#0" expanded="true" />
-            <element signature="e#86#92#0" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#!!top" expanded="true" />
-            <element signature="e#232#238#0" expanded="true" />
-            <element signature="e#238#244#0" expanded="true" />
-            <element signature="e#4#10#0" expanded="true" />
-            <element signature="e#10#16#0" expanded="true" />
-            <element signature="e#71#77#0" expanded="true" />
-            <element signature="e#77#83#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/bbs/commentList.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-62" />
@@ -1409,77 +1250,71 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/bbs/detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2394">
-          <folding>
-            <element signature="e#38#44#0" expanded="true" />
-            <element signature="e#44#50#0" expanded="true" />
-            <element signature="e#50#56#0" expanded="true" />
-            <element signature="e#56#62#0" expanded="true" />
-            <element signature="e#62#68#0" expanded="true" />
-            <element signature="e#0#6#0" expanded="true" />
-            <element signature="e#6#12#0" expanded="true" />
-            <element signature="e#12#18#0" expanded="true" />
-            <element signature="e#18#24#0" expanded="true" />
-            <element signature="e#24#30#0" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
-            <element signature="e#163#169#0" expanded="true" />
-            <element signature="e#169#175#0" expanded="true" />
-            <element signature="e#175#181#0" expanded="true" />
-            <element signature="e#181#187#0" expanded="true" />
-            <element signature="e#187#193#0" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#!!top" expanded="true" />
-            <element signature="e#301#307#0" expanded="true" />
-            <element signature="e#307#313#0" expanded="true" />
-            <element signature="e#313#319#0" expanded="true" />
-            <element signature="e#319#325#0" expanded="true" />
-            <element signature="e#325#331#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-2394" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/bbs/write.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-803">
-          <folding>
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-803" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/header/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1012">
-          <folding>
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-1012" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/header/logout.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/header/join.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/resources/templates/adminPage/userList.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="722">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/AccountServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/validator/AccountValidatorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-171" />
+        <state relative-caret-position="855">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/validator/AccountValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/validator/WriterCheckValidator.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/validator/WriterCheckValidatorImpl.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/AccountServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/CommentServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/controller/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2">
+          <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/08.pilot/test180924/src/main/java/com/home/test180924/service/PostServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-38">
+          <caret line="35" column="43" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">
