@@ -37,7 +37,7 @@ public class Account {
 
     @OneToMany(mappedBy = "postWriter")
     @JsonIgnore//이거 없으면 재귀적으로 돌면서 오류가 납니다
-   // @Lazy //레이지로 해놔도 Dto 안쓰면 500 오류가.. ㅠ0ㅠ
+   // @Lazy //레이지로 해놔도 Dto 안쓰면 500 오류
     private List<Post> posts;
 
     @OneToMany(mappedBy = "commentWriter")

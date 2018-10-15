@@ -29,7 +29,7 @@ public class WriterCheckValidatorImpl implements WriterCheckValidator{
         if(writer.equals(loginUserEmail)){
             return true;
         }
-        log.debug("작성자 불일치!! 데이터 작성자 : "+writer+" / 데이터를 변경하려는 로그인 유저 : "+loginUserEmail);
+        log.debug("작성자 불일치>> 데이터 작성자 : "+writer+" / 데이터를 변경하려는 로그인 유저 : "+loginUserEmail);
         return false;
     }
 

@@ -24,7 +24,7 @@ JWTImpl implements JWT{
     public String getJwt(Account account){
     	
     	Date date = new Date();
-    	Date ex = new Date(date.getTime()+ (long)(1000*30));//30//1분 //(long)(1000*60*60*1)
+    	Date ex = new Date(date.getTime()+ (long)(1000*60*60*1));//로그인 시 1시간동안 유효
 
         String token = Jwts.builder()
         		.setSubject(account.getEmail())

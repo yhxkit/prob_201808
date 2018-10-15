@@ -22,16 +22,12 @@ public class AccountValidatorImpl implements AccountValidator  {
     private static final String emailRegExp ="[0-9a-zA-Z][_0-9a-zA-Z-]*@[_0-9a-zA-Z-]+(\\.[_0-9a-zA-Z-]+){1,2}$";
     private Pattern pattern = Pattern.compile(emailRegExp);
 
-
     private AccountRepository accountRepository;
     public AccountValidatorImpl(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
 
-    @Override
-    public boolean supports(Class<?> clazz) {
-        return Account.class.isAssignableFrom(clazz); //clazz 객체가 Account 객체로 변환 가능한지 확인
-    }
+
 
     @Override
     public ResultMessage validate(Account account) {

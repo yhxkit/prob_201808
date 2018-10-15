@@ -93,9 +93,9 @@ public class MainController {
 
         Iterable<Post> userPosts = postService.findByWriter(deletingUserEmail);
         List<Integer> deletingPostsIdx  = StreamSupport.stream(userPosts.spliterator(), false).map(Post::getPostIdx).collect(Collectors.toList());
-        deletingPostsIdx.stream().forEach(commentService::deleteByPostIdx); //게시글의 코멘트를 삭제..
+        deletingPostsIdx.stream().forEach(commentService::deleteByPostIdx); //게시글의 코멘트를 삭제
 
-        postService.deleteAll(userPosts); //유저의 게시글 삭제...
+        postService.deleteAll(userPosts); //유저의 게시글 삭제
         Iterable<Comment> userComments = commentService.findByCommentWriter(deletingUserEmail);
         commentService.deleteAll(userComments); //유저의 코멘트 삭제
         accountService.delete(deletingUserEmail);

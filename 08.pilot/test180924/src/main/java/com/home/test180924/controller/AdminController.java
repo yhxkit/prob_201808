@@ -14,7 +14,6 @@ import com.home.test180924.controller.responseUtil.EntityForResponse;
 import com.home.test180924.entity.Account;
 import com.home.test180924.service.interfaces.AccountService;
 @Slf4j
-//@CustomAnnotation(EnumForCustomInterceptor.ADMIN)//어노테이션 설정을 TYPE_USE로 하면 되긴 하는데... 그럼 인터셉터에서 어떻게...
 @RestController
 public class AdminController {
 

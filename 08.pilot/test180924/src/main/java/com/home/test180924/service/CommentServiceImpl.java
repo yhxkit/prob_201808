@@ -76,7 +76,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public ResultMessage<Comment> edit(int postIdx, int commentIdx, CommentDto commentDto, String token){
 
-        Comment origin = commentRepository.findByCommentIdx(commentIdx); //null...optional......??
+        Comment origin = commentRepository.findByCommentIdx(commentIdx);
         ResultMessage resultMessage = articleValidator.articleExistencyCheck(origin);
         if(resultMessage.isImmediateReturn()){
             return  resultMessage;
@@ -96,7 +96,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public ResultMessage delete(int commentIdx, String token) {
 
-        Comment origin = commentRepository.findByCommentIdx(commentIdx); //null...optional......??
+        Comment origin = commentRepository.findByCommentIdx(commentIdx);
         ResultMessage resultMessage = articleValidator.articleExistencyCheck(origin);
         if (resultMessage.isImmediateReturn()) {
             return resultMessage;

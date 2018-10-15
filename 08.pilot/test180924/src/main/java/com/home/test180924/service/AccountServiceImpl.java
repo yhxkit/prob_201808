@@ -41,7 +41,7 @@ public class AccountServiceImpl implements AccountService {
 
 
 
-	//autowired 보다 생성자 방식이 선호된다고 함.. 코드는 길어지지만 테스트등에서 해당 객체를 생성해서 사용하고 싶을때, autowired로 주입받은 필드에 대해 테스트가 불가해서..
+	//autowired 보다 생성자 방식이 선호된다고 함.. 코드는 길어지지만 테스트등에서 해당 객체를 생성해서 사용하고 싶을때, autowired로 주입받은 필드에 대해 테스트가 불가해서
     public AccountServiceImpl(AccountRepository accountRepository, PostRepository postRepository, CommentRepository commentRepository, PasswordEncryptUtil passwordEncryptUtil, Paging paging, JWT jwt, AccountValidator accountValidator) {
         this.accountRepository = accountRepository;
         this.postRepository = postRepository;
@@ -71,7 +71,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
 	public ResultMessage<Account> login(Account account){
 
-        ResultMessage resultMessage = accountValidator.userExistencyCheck(account.getEmail());// 로그인 성공시 dat값 token 값 들어간 Map으로 변경할거라서 제네릭 안씀..
+        ResultMessage resultMessage = accountValidator.userExistencyCheck(account.getEmail());// 로그인 성공시 dat값 token 값 들어간 Map으로 변경할거라서 제네릭 안씀
         if(resultMessage.isImmediateReturn()){
             log.debug("로그인 시도 (계정 없음)");
             return resultMessage;

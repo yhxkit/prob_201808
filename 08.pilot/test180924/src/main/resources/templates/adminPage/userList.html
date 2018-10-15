@@ -12,7 +12,7 @@
             console.log("보내는 데이터 "+keyword);
 
             $.ajax({
-                type: 'post',//get으로 보내려면 uri 인코딩...해야하는데.. 그냥 보냄..
+                type: 'post',//get으로 보내려면 uri 인코딩 해야해서 그냥 post로
                 url: 'http://localhost:8080/admin/search?page='+currentUserSearchPage+'&elementsNumberForOnePage='+postNumPerPage,
                 headers: {'token': localStorage.getItem('currentUserToken')},
                 contentType: 'application/json; charset=utf-8',

@@ -100,7 +100,7 @@
 
             $.ajax({
                 url: 'http://localhost:8080/myPage/update',
-                type: 'put', //put은 json써서 dto로 처리해주지 않으면 엔티티에 매핑이 안됨 ㅠㅠ
+                type: 'put', //rest(put, delete)은 json써서 dto로 처리해주지 않으면 엔티티에 매핑안됨
                 data: data,
                 contentType: 'application/json; charset=utf-8',
                 headers: {'token': localStorage.getItem('currentUserToken')},

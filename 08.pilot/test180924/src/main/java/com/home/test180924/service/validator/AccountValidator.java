@@ -4,7 +4,6 @@ import com.home.test180924.controller.responseUtil.ResultMessage;
 import com.home.test180924.entity.Account;
 
 public interface AccountValidator {
-    boolean supports(Class<?> clazz);
     ResultMessage validate(Account account);
     boolean duplicatedCheck(String email);
 

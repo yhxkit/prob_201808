@@ -3,15 +3,9 @@ package com.home.test180924.service;
 import com.home.test180924.controller.responseUtil.ResultMessage;
 import com.home.test180924.entity.PostDto;
 import com.home.test180924.entity.enumForEntity.Article;
-import com.home.test180924.entity.enumForEntity.PostCategory;
-import com.home.test180924.service.interfaces.AccountService;
-import com.home.test180924.service.interfaces.CommentService;
 import com.home.test180924.service.validator.ArticleValidator;
 import com.home.test180924.service.validator.WriterCheckValidator;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
