@@ -102,7 +102,7 @@
             console.log("현재 로그인 된 이용자의 권한! "+currentUserScope);
             console.log("현재 로그인 된 이용자의 상태! "+currentUserStatus);
 
-            if(currentUserToken==null){
+            if(currentUserToken==null || currentUserEmail==null || currentUserScope==null || currentUserStatus==null){
 				$('#logout').hide();
 				$('#login').show();
 				$('#toPostWriteForm').hide();

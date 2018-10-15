@@ -3,6 +3,7 @@ package com.home.test180924.service.validator;
 import com.home.test180924.controller.responseUtil.ResultMessage;
 import com.home.test180924.entity.Account;
 import com.home.test180924.entity.enumForEntity.Article;
+import com.home.test180924.repository.AccountRepository;
 import com.home.test180924.service.interfaces.AccountService;
 import com.home.test180924.service.jwt.JWT;
 import lombok.extern.slf4j.Slf4j;
@@ -14,15 +15,14 @@ import java.util.Map;
 @Component
 public class WriterCheckValidatorImpl implements WriterCheckValidator{
 
-    private AccountService accountService;
+    private AccountRepository accountRepository;
     private JWT jwt;
 
-    public WriterCheckValidatorImpl(JWT jwt, AccountService accountService) {
+    public WriterCheckValidatorImpl(JWT jwt, AccountRepository accountRepository) {
         this.jwt = jwt;
-        this.accountService = accountService;
+        this.accountRepository = accountRepository;
     }
 
-    @Override
     public boolean checkWriter(String writer, String token){
         Map tokenMap =  jwt.parseToken(token);
         String loginUserEmail =(String)tokenMap.get("subject");
@@ -40,9 +40,9 @@ public class WriterCheckValidatorImpl implements WriterCheckValidator{
         Account writerAccount;
 
         if(article.equals(Article.COMMENT)){
-            writerAccount = accountService.findByCommentsCommentIdx(elementIdx);
+            writerAccount = accountRepository.findByCommentsCommentIdx(elementIdx);
         }else{
-            writerAccount = accountService.findByPostsPostIdx(elementIdx);
+            writerAccount = accountRepository.findByPostsPostIdx(elementIdx);
         }
         String writer = writerAccount.getEmail();
 

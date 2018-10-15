@@ -11,12 +11,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.home.test180924.entity.Account;
+import com.home.test180924.entity.AccountDto;
+import com.home.test180924.entity.Comment;
+import com.home.test180924.entity.Post;
 import com.home.test180924.repository.AccountRepository;
+import com.home.test180924.repository.CommentRepository;
+import com.home.test180924.repository.PostRepository;
 import com.home.test180924.service.interfaces.AccountService;
 import com.home.test180924.util.Paging;
 import com.home.test180924.util.PasswordEncryptUtil;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Slf4j
 @Service
@@ -24,6 +31,9 @@ import java.util.*;
 public class AccountServiceImpl implements AccountService {
 
 	private AccountRepository accountRepository;
+	private PostRepository postRepository;
+	private CommentRepository commentRepository;
+
 	private PasswordEncryptUtil passwordEncryptUtil;
 	private Paging paging;
 	private JWT jwt;
@@ -32,8 +42,10 @@ public class AccountServiceImpl implements AccountService {
 
 
 	//autowired 보다 생성자 방식이 선호된다고 함.. 코드는 길어지지만 테스트등에서 해당 객체를 생성해서 사용하고 싶을때, autowired로 주입받은 필드에 대해 테스트가 불가해서..
-    public AccountServiceImpl(AccountRepository accountRepository, PasswordEncryptUtil passwordEncryptUtil, Paging paging, JWT jwt, AccountValidator accountValidator) {
+    public AccountServiceImpl(AccountRepository accountRepository, PostRepository postRepository, CommentRepository commentRepository, PasswordEncryptUtil passwordEncryptUtil, Paging paging, JWT jwt, AccountValidator accountValidator) {
         this.accountRepository = accountRepository;
+        this.postRepository = postRepository;
+        this.commentRepository = commentRepository;
         this.passwordEncryptUtil = passwordEncryptUtil;
         this.paging = paging;
         this.jwt = jwt;
@@ -57,7 +69,7 @@ public class AccountServiceImpl implements AccountService {
 
 
     @Override
-	public ResultMessage<?> login(Account account){
+	public ResultMessage<Account> login(Account account){
 
         ResultMessage resultMessage = accountValidator.userExistencyCheck(account.getEmail());// 로그인 성공시 dat값 token 값 들어간 Map으로 변경할거라서 제네릭 안씀..
         if(resultMessage.isImmediateReturn()){
@@ -169,4 +181,20 @@ public class AccountServiceImpl implements AccountService {
 
         return resultMessage;
     }
+    
+    
+    
+    @Override
+    public Account castAccountDtoToAccount(AccountDto accountDto) {
+    	Account newAccount = new Account();
+    	newAccount.setEmail(accountDto.getEmail());
+    	newAccount.setName(accountDto.getName());
+    	newAccount.setPassword(accountDto.getPassword());
+    	newAccount.setAuth(accountDto.getAuth());
+    	newAccount.setStatus(accountDto.getStatus());
+    	return newAccount;
+    }
+    
+    
+    
 }

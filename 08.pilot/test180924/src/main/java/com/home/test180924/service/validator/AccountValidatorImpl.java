@@ -24,7 +24,6 @@ public class AccountValidatorImpl implements AccountValidator  {
 
 
     private AccountRepository accountRepository;
-    private AccountService accountService;
     public AccountValidatorImpl(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }

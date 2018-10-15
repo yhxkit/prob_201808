@@ -10,7 +10,6 @@ import org.springframework.data.domain.Page;
 
 public interface PostService {
 
-
     Page<Post> bbsWithPage(int requiredBbsPage, int elementsNumberForOnePage);
 
     ResultMessage<Post> write(PostDto postDto);
@@ -19,6 +18,7 @@ public interface PostService {
 
     ResultMessage delete(int postIdx, String token);
     void deleteAll(Iterable<Post> userPosts);
+    
     Iterable<Post> findPostsWithPage(String keyword, int page, int elementsNumberForOnePage);
     Iterable<Post> findByWriter(String keyword);
 }

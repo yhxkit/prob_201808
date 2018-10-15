@@ -25,6 +25,7 @@ public class CommentServiceImpl implements CommentService {
     private CommentRepository commentRepository;
     private AccountRepository accountRepository;
     private PostRepository postRepository;
+    
     private WriterCheckValidator writerCheckValidator;
     private ArticleValidator articleValidator;
 

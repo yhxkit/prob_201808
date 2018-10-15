@@ -13,6 +13,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.home.test180924.controller.interceptor.CustomAnnotation;
+import com.home.test180924.controller.interceptor.EnumForCustomInterceptor;
 import com.home.test180924.controller.responseUtil.EntityForResponse;
 import com.home.test180924.entity.Account;
 import com.home.test180924.service.interfaces.AccountService;
@@ -23,7 +25,6 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -42,6 +43,7 @@ public class MainController {
         this.accountService = accountService;
         this.postService = postService;
         this.commentService = commentService;
+        
         this.responseEntity = responseEntity;
         this.jwt = jwt;
         this.accountValidator = accountValidator;
@@ -66,6 +68,7 @@ public class MainController {
         return responseEntity.get(accountValidator.validate(account));
     }
 
+    @CustomAnnotation(EnumForCustomInterceptor.LOGIN)
     @PostMapping("/myPage")
     public ResponseEntity mypage(HttpServletRequest request){
         String token = request.getHeader("token");
@@ -75,7 +78,7 @@ public class MainController {
         return responseEntity.get( accountValidator.userExistencyCheck(email) );
     }
 
-
+    @CustomAnnotation(EnumForCustomInterceptor.LOGIN)
     @DeleteMapping("/myPage/deleteAccount")
     public ResponseEntity withdraw(HttpServletRequest request){
 
@@ -88,7 +91,6 @@ public class MainController {
             return responseEntity.get(resultMessage);
         }
 
-        //accountService 쪽으로 넣으려고 하면, post/commentServiece 때문에 circular dependencies 익셉션..
         Iterable<Post> userPosts = postService.findByWriter(deletingUserEmail);
         List<Integer> deletingPostsIdx  = StreamSupport.stream(userPosts.spliterator(), false).map(Post::getPostIdx).collect(Collectors.toList());
         deletingPostsIdx.stream().forEach(commentService::deleteByPostIdx); //게시글의 코멘트를 삭제..
@@ -98,9 +100,11 @@ public class MainController {
         commentService.deleteAll(userComments); //유저의 코멘트 삭제
         accountService.delete(deletingUserEmail);
         return responseEntity.get(resultMessage);
+        
 
     }
 
+    @CustomAnnotation(EnumForCustomInterceptor.LOGIN)
     @PutMapping(value="/myPage/update", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity update(HttpServletRequest request, @RequestBody AccountDto accountDto){
         HashMap<String, String> resultMap = new HashMap<>();
@@ -116,7 +120,8 @@ public class MainController {
         return responseEntity.get(accountService.editNameAndPassword(email, name, password));
 
     }
-
+    
+    @CustomAnnotation(EnumForCustomInterceptor.LOGIN)
     @PostMapping(value="/myPage/update", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<?> startUpdate(HttpServletRequest request, @RequestBody AccountDto accountDto){
 
@@ -124,11 +129,11 @@ public class MainController {
         Map userMap = jwt.parseToken(token);
         String email =(String)userMap.get("subject");
         log.info(email + " 정보 변경 > 패스워드로 본인 확인 : "+accountDto.getPassword());
-        Account account = new Account();
+        Account account = accountService.castAccountDtoToAccount(accountDto);
         account.setEmail(email);
-        account.setPassword(accountDto.getPassword());
-        ResultMessage resultMessage = accountService.login(account);
-        return responseEntity.get(resultMessage);
+        //login 쪽에서 사용하는 메서드 재사용하기 때문에 Dto를 굳이 account로 변환해서  
+        
+        return responseEntity.get(accountService.login(account));
 
     }
 

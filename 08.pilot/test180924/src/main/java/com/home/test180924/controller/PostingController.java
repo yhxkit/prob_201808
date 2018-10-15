@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.home.test180924.controller.interceptor.CustomAnnotation;
+import com.home.test180924.controller.interceptor.EnumForCustomInterceptor;
 import com.home.test180924.controller.responseUtil.EntityForResponse;
 import com.home.test180924.service.interfaces.CommentService;
 import com.home.test180924.service.interfaces.PostService;
@@ -14,6 +16,7 @@ import com.home.test180924.service.interfaces.PostService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -32,6 +35,8 @@ public class PostingController {
         this.responseEntity = responseEntity;
     }
 
+    
+
     @GetMapping("/bbs")
     public Page<Post> getAllPosts(@RequestParam(value="page", required = false, defaultValue = "1") int page, @RequestParam(value="elementsNumberForOnePage") int elementsNumberForOnePage){
         log.debug("bbs 입장");
@@ -39,12 +44,13 @@ public class PostingController {
         return posts;
     }
 
+    @CustomAnnotation(EnumForCustomInterceptor.LOGIN)
     @PostMapping("/bbs/write")
     public ResponseEntity<?> write(@RequestBody PostDto postDto){
         log.debug("포스트 작성 "+ postDto.getTitle()+" "+postDto.getPostContent());
         return responseEntity.get(postService.write(postDto));
     }
-
+    
     @GetMapping("/bbs/{1}")
     public ResponseEntity<?> detail(@PathVariable("1") int postIdx){
         log.debug("상세보기 "+postIdx);
@@ -54,6 +60,7 @@ public class PostingController {
         return responseEntity.get(postDetailAndCommentList);
     }
 
+    @CustomAnnotation(EnumForCustomInterceptor.LOGIN)
     @PutMapping("/bbs/{1}")
     public ResponseEntity<?> editPost(@RequestBody PostDto postDto, HttpServletRequest request, @PathVariable("1") int postIdx){
         log.debug("포스트 수정 "+postDto.getTitle()+" : "+postDto.getPostContent()+ "("+postDto.getPostIdx()+")");
@@ -61,7 +68,7 @@ public class PostingController {
         return responseEntity.get(postService.edit(postIdx, postDto, token));
     }
 
-
+    @CustomAnnotation(EnumForCustomInterceptor.LOGIN)
     @DeleteMapping("/bbs/{1}")
     public ResponseEntity<?> deletePost(@PathVariable("1") int postIdx, HttpServletRequest request){
         log.debug("포스트 삭제 "+postIdx);
@@ -69,13 +76,14 @@ public class PostingController {
         return responseEntity.get(postService.delete(postIdx, token));
     }
 
+    @CustomAnnotation(EnumForCustomInterceptor.LOGIN)
     @PostMapping("/bbs/{1}/comment")
     public ResponseEntity<?> reply(@RequestBody CommentDto commentDto ,@PathVariable("1") int postIdx, HttpServletRequest request ){
         log.debug(postIdx+"번 포스트의 코멘트 작성 "+commentDto.getCommentContent() + ":" + commentDto.getCommentWriterEmail());
         return responseEntity.get(commentService.reply(commentDto, postIdx));
     }
 
-
+    @CustomAnnotation(EnumForCustomInterceptor.LOGIN)
     @PutMapping("/bbs/{1}/{2}")
     public ResponseEntity<?> editComment(@RequestBody CommentDto commentDto, @PathVariable("1") int postIdx, @PathVariable("2") int commentIdx, HttpServletRequest request){
         log.debug(postIdx+"번 포스트의 "+commentDto.getCommentIdx()+" 코멘트 수정 "+ commentDto.getCommentContent());
@@ -83,6 +91,7 @@ public class PostingController {
         return responseEntity.get(commentService.edit(postIdx, commentIdx, commentDto, token));
     }
 
+    @CustomAnnotation(EnumForCustomInterceptor.LOGIN)
     @DeleteMapping("/bbs/{1}/{2}")
     public ResponseEntity<?> deleteComment(@PathVariable("1") int postIdx, @PathVariable("2") int commentIdx, HttpServletRequest request){
         log.debug(postIdx+"번 포스트의 코멘트 삭제 "+commentIdx);
@@ -92,21 +101,22 @@ public class PostingController {
     }
 
     @PostMapping("/bbs/search")
-    public Map<String, Post> searchPosts(@RequestBody Searching searching, @RequestParam(value="page", required = false, defaultValue = "1") int page, @RequestParam(value="elementsNumberForOnePage") int elementsNumberForOnePage){
+    public ResponseEntity<?> searchPosts(@RequestBody Searching searching, @RequestParam(value="page", required = false, defaultValue = "1") int page, @RequestParam(value="elementsNumberForOnePage") int elementsNumberForOnePage){
     	String keyword = searching.getKeyword(); 
     	String category =searching.getCategory();
-    	Map searchMap = new HashMap();
     	log.debug("검색 카테고리: "+category+", 검색 키워드: "+keyword);
+    
+    	Iterable<Post> foundPosts  = null;
+    	//article validator에서 정의된 카테고리 이외의 값이 들어왔을때에 반환할 결과 메세지 검증을 만들어야 하나....
     	
     	if(PostCategory.TITLE.toString().equals( category )) {
-    	     Iterable<Post> posts =postService.findPostsWithPage(keyword, page-1, elementsNumberForOnePage);
-    	     searchMap.put("posts", posts);
+    		foundPosts =postService.findPostsWithPage(keyword, page-1, elementsNumberForOnePage);
     	}else if(PostCategory.WRITER.toString().equals( category )) {
-    		 Iterable<Post> posts =postService.findByWriter(keyword);
-     	     searchMap.put("posts", posts);
+    		foundPosts =postService.findByWriter(keyword);
     	}
     	
-    	return searchMap;
+    	
+    	return responseEntity.get(foundPosts);
 
     }
     

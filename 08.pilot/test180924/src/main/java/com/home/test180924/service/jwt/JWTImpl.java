@@ -18,13 +18,13 @@ import lombok.extern.slf4j.Slf4j;
 public class
 JWTImpl implements JWT{
 
-	String secretKey = "SECRET"; // 앗.. 이거 어떻게 하지
+	String secretKey = "SECRET";
 	
 	@Override
     public String getJwt(Account account){
     	
     	Date date = new Date();
-    	Date ex = new Date(date.getTime()+ (long)(1000*60*10));//10분 //(long)(1000*60*60*3)3시간
+    	Date ex = new Date(date.getTime()+ (long)(1000*30));//30//1분 //(long)(1000*60*60*1)
 
         String token = Jwts.builder()
         		.setSubject(account.getEmail())
@@ -73,17 +73,16 @@ JWTImpl implements JWT{
 			validToken=true;
 
     	}catch (ExpiredJwtException e) {
-			log.debug("ExpiredJwtException : "+token);
+			log.debug("ExpiredJwtException : "+token +"\n"+e.getMessage());
 		}catch(UnsupportedJwtException e) {
-			log.debug("UnsupportedJwtException : "+token);
+			log.debug("UnsupportedJwtException : "+token+"\n"+e.getMessage());
 		}catch(MalformedJwtException e) {
-			log.debug("MalformedJwtException : "+token);
+			log.debug("MalformedJwtException : "+token+"\n"+e.getMessage());
 		}catch(SignatureException e) {
-			log.debug("SignatureException : "+token);
+			log.debug("SignatureException : "+token+"\n"+e.getMessage());
 		}catch(IllegalArgumentException e) {
-			log.debug("IllegalArgumentException : "+token);
+			log.debug("IllegalArgumentException : "+token+"\n"+e.getMessage());
 		}
-
 
 		tokenMap.put("validToken",  validToken);
     	

@@ -12,6 +12,7 @@ import com.home.test180924.entity.Post;
 @Repository
 public interface PostRepository extends PagingAndSortingRepository<Post, Integer> {//CrudRepository<Post, Integer> {
     Post findByPostIdx(int postIdx);
+    Iterable<Post> findByPostWriterEmail(String email);
     Page<Post> findAll(Pageable pageable);
     Iterable<Post> findByPostWriterEmailIgnoreCaseContainingOrderByPostIdxDesc(String keyword);
     Iterable<Post> findByTitleIgnoreCaseContainingOrderByPostIdxDesc(String keyword);

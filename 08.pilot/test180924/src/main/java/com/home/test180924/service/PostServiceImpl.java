@@ -3,16 +3,23 @@ package com.home.test180924.service;
 import com.home.test180924.controller.responseUtil.ResultMessage;
 import com.home.test180924.entity.PostDto;
 import com.home.test180924.entity.enumForEntity.Article;
+import com.home.test180924.entity.enumForEntity.PostCategory;
 import com.home.test180924.service.interfaces.AccountService;
 import com.home.test180924.service.interfaces.CommentService;
 import com.home.test180924.service.validator.ArticleValidator;
 import com.home.test180924.service.validator.WriterCheckValidator;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.home.test180924.entity.Post;
+import com.home.test180924.repository.AccountRepository;
+import com.home.test180924.repository.CommentRepository;
 import com.home.test180924.repository.PostRepository;
 import com.home.test180924.service.interfaces.PostService;
 import com.home.test180924.util.Paging;
@@ -24,18 +31,18 @@ import com.home.test180924.util.Paging;
 public class PostServiceImpl implements PostService {
 
     private PostRepository postRepository;
-    private AccountService accountService;
-    private CommentService commentService;
+    private AccountRepository accountRepository;
+    private CommentRepository commentRepository;
     private Paging paging;
 
     private WriterCheckValidator writerCheckValidator;
     private ArticleValidator articleValidator;
 
 
-    public PostServiceImpl(PostRepository postRepository, AccountService accountService, CommentService commentService, Paging paging, WriterCheckValidator writerCheckValidator, ArticleValidator articleValidator) {
+    public PostServiceImpl(PostRepository postRepository, AccountRepository accountRepository, CommentRepository commentRepository, Paging paging, WriterCheckValidator writerCheckValidator, ArticleValidator articleValidator) {
         this.postRepository = postRepository;
-        this.accountService = accountService;
-        this.commentService = commentService;
+        this.accountRepository = accountRepository;
+        this.commentRepository = commentRepository;
         this.paging = paging;
         this.writerCheckValidator=writerCheckValidator;
         this.articleValidator = articleValidator;
@@ -60,7 +67,7 @@ public class PostServiceImpl implements PostService {
         Post post = new Post();
         post.setTitle(postDto.getTitle());
         post.setPostContent(postDto.getPostContent());
-        post.setPostWriter(accountService.findByEmail(postDto.getPostWriter()));
+        post.setPostWriter(accountRepository.findByEmail(postDto.getPostWriter()));
         postRepository.save(post);
         resultMessage.setData(postRepository.findByPostIdx(post.getPostIdx()));
         return resultMessage;
@@ -103,11 +110,13 @@ public class PostServiceImpl implements PostService {
         if(resultMessage.isImmediateReturn()){
             return resultMessage;
         }
-        commentService.deleteByPostIdx(postIdx);//코멘트들도 같이 삭제
+        commentRepository.deleteAll( commentRepository.findByBelongingPostPostIdx(postIdx) );//코멘트들도 같이 삭제
         postRepository.delete(postRepository.findByPostIdx(postIdx));
         return resultMessage;
     }
 
+   
+    
 
     @Override
     public Iterable<Post> findPostsWithPage(String keyword, int page, int elementsNumberForOnePage) {
